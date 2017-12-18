@@ -1,10 +1,9 @@
 import React  from 'react';
 import ReactDOM from 'react-dom';
+
 import registerServiceWorker from './registerServiceWorker';
 
-const App = () => {
-    return <div>Hello World</div>
-}
+import App from './components/App';
 
 ReactDOM.render(
     <App />
