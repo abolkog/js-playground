@@ -1,0 +1,31 @@
+{
+  "name": "js-playground",
+  "description": "JavaScript Playground hooked up with Redux",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abolkog/js-playground.git"
+  },
+  "author": "Khalid Elshafie <abolkog@gmail.com> (http://abolkog.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abolkog/js-playground/issues"
+  },
+  "homepage": "https://github.com/abolkog/js-playground#readme",
+  "dependencies": {
+    "babel-standalone": "^6.26.0",
+    "react": "^16.1.0",
+    "react-codemirror": "^1.0.0",
+    "react-dom": "^16.1.0",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2"
+  }
+}
