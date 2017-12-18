@@ -2,6 +2,8 @@
 
 A simple JavaScript playground hooked up directly with Redux.
 
+## Demo
+You can see demo at [This link](https://abolkog.github.io/js-playground/)
 
 ## Usage
 1- Install the dependencies
