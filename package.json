@@ -1,7 +1,7 @@
 {
   "name": "js-playground",
   "description": "JavaScript Playground hooked up with Redux",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
