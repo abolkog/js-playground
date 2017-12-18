@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import CodeMirror from 'react-codemirror'
 import 'codemirror/mode/jsx/jsx';
 
+import { codeChanged } from '../actions';
+
 
 class Editor extends Component {
+
+    _onCodeChanged(code) {
+        console.clear(); //Clear the console
+        this.props.codeChanged(code);
+    }
     render() {
         const editorOptions = {
             mode: 'jsx',
@@ -13,10 +21,16 @@ class Editor extends Component {
         }
         return(
             <div className='editorContainer'>
-                <CodeMirror options={editorOptions} />
+                <CodeMirror 
+                    onChange={this._onCodeChanged.bind(this)}
+                    options={editorOptions} />
             </div>
         );
     }
 }
 
-export default Editor;
+const mapStateToProps = ({ code }) => {
+    return { code };
+}
+
+export default connect(mapStateToProps, { codeChanged })(Editor);

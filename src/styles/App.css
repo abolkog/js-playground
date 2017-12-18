@@ -1,12 +1,18 @@
 @import "../../node_modules/codemirror/lib/codemirror.css";
 @import "../../node_modules/codemirror/theme/material.css";
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
 .error { color: red ;}
 
-.CodeMirror { min-height: 800px; font-size: 20px }
+.CodeMirror { min-height: 750px; font-size: 20px; }
 
 .console { 
     padding: 10px 0 0 10px;
     font-size: large;
-    font-family: 'monospace'
+    font-family: sans-serif;
 }
