@@ -8,7 +8,7 @@ You can see demo at [This link](https://abolkog.github.io/js-playground/)
 ## Usage
 1- Install the dependencies
 ```
-yarn install
+npm install
 npm start
 ```
 2- Visit `http://localhost:3000` on your browser.
