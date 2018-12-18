@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Editor from './Editor';
-import Console from './Console';
+import Output from './Output';
 
 import '../styles/App.css';
 import Header from './Header';
@@ -65,7 +65,7 @@ class App extends Component {
         title: 'Result',
         iconName: 'fa fa-terminal',
         iconWrap: true,
-        component: Console,
+        component: Output,
         componentProps: { width: this.state.width }
       }
     ];

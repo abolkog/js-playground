@@ -1,10 +1,17 @@
-import { CODE_CHANGED } from '../actions/types';
+import { CODE_SUCCESS, CODE_ERROR } from '../actions/types';
 
-export default (state = '', action) => {
-    switch (action.type) {
-        case CODE_CHANGED:
-            return action.payload;
-        default:
-            return state;
-    }
-}
+const INITIAL_STATE = {
+  result: [],
+  error: null
+};
+
+export default (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case CODE_SUCCESS:
+      return { ...state, result: action.payload, error: null };
+    case CODE_ERROR:
+      return { ...state, error: action.payload, result: [] };
+    default:
+      return state;
+  }
+};

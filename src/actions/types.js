@@ -1,1 +1,2 @@
-export const CODE_CHANGED = 'code_changed';
+export const CODE_SUCCESS = 'CODE_SUCCESS';
+export const CODE_ERROR = 'CODE_ERROR';

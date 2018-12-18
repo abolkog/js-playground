@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import CodeMirror from 'react-codemirror';
 import 'codemirror/mode/jsx/jsx';
 
-import { codeChanged } from '../actions';
+import { handleCode } from '../actions';
 
 class Editor extends Component {
   _onCodeChanged(code) {
-    console.clear(); //Clear the console
-    this.props.codeChanged(code);
+    console.clear();
+    this.props.handleCode(code);
   }
+
   render() {
     const editorOptions = {
       mode: 'jsx',
@@ -29,11 +30,7 @@ class Editor extends Component {
   }
 }
 
-const mapStateToProps = ({ code }) => {
-  return { code };
-};
-
 export default connect(
-  mapStateToProps,
-  { codeChanged }
+  null,
+  { handleCode }
 )(Editor);
