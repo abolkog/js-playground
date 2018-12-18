@@ -1,18 +1,47 @@
-@import "../../node_modules/codemirror/lib/codemirror.css";
-@import "../../node_modules/codemirror/theme/material.css";
+@import '../../node_modules/codemirror/lib/codemirror.css';
+@import '../../node_modules/codemirror/theme/material.css';
 
+html,
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
+#root {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
 
-.error { color: red ;}
+.appConainer {
+  display: flex;
+  flex: 1;
+}
 
-.CodeMirror { min-height: 750px; font-size: 20px; }
+.error {
+  color: red;
+}
 
-.console { 
-    padding: 10px 0 0 10px;
-    font-size: large;
-    font-family: sans-serif;
+.editorContainer {
+  height: 100%;
+  
+}
+.ReactCodeMirror, .CodeMirror {
+  height: 100%;
+  font-size: 20px;
+}
+
+.CodeMirror-wrap {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+
+.console {
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 10px;
+  font-size: large;
+  font-family: sans-serif;
 }

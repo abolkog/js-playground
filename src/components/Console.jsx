@@ -36,8 +36,11 @@ class Console extends Component {
     }
 
     render() {
+        const { width } = this.props;
+        const windowWith = window.innerWidth - 100;
+        const consoleWidth = windowWith - width;
         return (
-            <div className='console'>{this._renderResult()}</div>
+            <div style={{ width: consoleWidth }} className='console'>{this._renderResult()}</div>
         );
     }
 }

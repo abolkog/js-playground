@@ -17,7 +17,9 @@ class Editor extends Component {
         const editorOptions = {
             mode: 'jsx',
             lineNumbers: true,
+            lineWrapping: true,
             theme: 'material'
+
         }
         return(
             <div className='editorContainer'>
