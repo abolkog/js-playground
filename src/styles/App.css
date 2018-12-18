@@ -14,20 +14,26 @@ body {
   height: 100%;
 }
 
+.mainContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .appConainer {
   display: flex;
   flex: 1;
 }
 
-.error {
-  color: red;
+.resizer {
+  width: 12px;
+  margin: 0 05px;
+  cursor: ew-resize;
+  background-color: #3a3f44;
 }
 
-.editorContainer {
-  height: 100%;
-  
-}
-.ReactCodeMirror, .CodeMirror {
+.ReactCodeMirror,
+.CodeMirror {
   height: 100%;
   font-size: 20px;
 }

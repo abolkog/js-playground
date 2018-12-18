@@ -4,6 +4,11 @@ import Editor from './Editor';
 import Console from './Console';
 
 import '../styles/App.css';
+import Header from './Header';
+import Tab from './Tab';
+
+const MIN_WIDTH = 100;
+const MAX_WIDTH = 1300;
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +35,13 @@ class App extends Component {
     window.addEventListener('mouseup', this._stopResize, false);
   }
   _startResize(e) {
-    const width = e.clientX;
+    let width = e.clientX;
+    if (width < MIN_WIDTH) {
+      width = MIN_WIDTH;
+    }
+    if (width > MAX_WIDTH) {
+      width = MAX_WIDTH;
+    }
     this.setState({ width });
   }
 
@@ -40,21 +51,38 @@ class App extends Component {
   }
 
   render() {
+    const rightTabs = [
+      {
+        title: 'JS Code',
+        iconName: 'fab fa-js-square',
+        iconColor: '#FFE933',
+        component: Editor
+      }
+    ];
+
+    const leftTabs = [
+      {
+        title: 'Result',
+        iconName: 'fa fa-terminal',
+        iconWrap: true,
+        component: Console,
+        componentProps: { width: this.state.width }
+      }
+    ];
     return (
-      <div className='appConainer'>
-        <div style={{ width: this.state.width }}>
-          <Editor />
-        </div>
-        <div
-          ref={el => (this._resizer = el)}
-          style={{
-            width: 12,
-            borderLeft: '3px dashed gray',
-            cursor: 'col-resize'
-          }}
-        />
-        <div className='resultContainer'>
-            <Console width={this.state.width} />
+      <div className='mainContainer'>
+        <Header />
+
+        <div className='appConainer'>
+          <div style={{ height: '100%', width: this.state.width }}>
+            <Tab tabs={rightTabs} />
+          </div>
+
+          <div className='resizer' ref={el => (this._resizer = el)} />
+
+          <div>
+            <Tab tabs={leftTabs} />
+          </div>
         </div>
       </div>
     );
