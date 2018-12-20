@@ -1,34 +1,40 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import CodeMirror from 'react-codemirror';
-import 'codemirror/mode/jsx/jsx';
+import { connect } from "react-redux";
 
-import { handleCode } from '../actions';
+import CodeMirror from "react-codemirror";
+import "../../node_modules/codemirror/mode/jsx/jsx";
+
+import { handleCode } from "../actions";
 
 class Editor extends Component {
-  _onCodeChanged(code) {
-    console.clear();
-    this.props.handleCode(code);
+  onCodeChanged(code) {
+    const { handleCode } = this.props;
+    handleCode(code);
   }
 
   render() {
     const editorOptions = {
-      mode: 'jsx',
+      mode: "jsx",
       lineNumbers: true,
       lineWrapping: true,
-      theme: 'material'
+      theme: "material"
     };
     return (
-      <div style={{ height: '100%' }}>
+      <div style={{ height: "100%" }}>
         <CodeMirror
-          onChange={this._onCodeChanged.bind(this)}
+          onChange={code => this.onCodeChanged(code)}
           options={editorOptions}
         />
       </div>
     );
   }
 }
+
+Editor.propTypes = {
+  handleCode: PropTypes.func.isRequired
+};
 
 export default connect(
   null,

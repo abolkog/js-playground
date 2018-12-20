@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Editor from './Editor';
-import Output from './Output';
+import Editor from "./Editor";
+import Output from "./Output";
 
-import '../styles/App.css';
-import Header from './Header';
-import Tab from './Tab';
+import "../styles/App.css";
+import Header from "./Header";
+import Tab from "./Tab";
+import About from "./About";
 
 const MIN_WIDTH = 100;
 const MAX_WIDTH = 1300;
@@ -17,24 +18,26 @@ class App extends Component {
       width: 900
     };
 
-    this._initResize = this._initResize.bind(this);
-    this._startResize = this._startResize.bind(this);
-    this._stopResize = this._stopResize.bind(this);
+    this.resizer = React.createRef();
+    this.initResize = this.initResize.bind(this);
+    this.startResize = this.startResize.bind(this);
+    this.stopResize = this.stopResize.bind(this);
   }
 
   componentDidMount() {
-    this._resizer.addEventListener('mousedown', this._initResize, false);
+    this.resizer.current.addEventListener("mousedown", this.initResize, false);
   }
 
   componentWillUnmount() {
-    this._stopResize();
+    this.stopResize();
   }
 
-  _initResize() {
-    window.addEventListener('mousemove', this._startResize, false);
-    window.addEventListener('mouseup', this._stopResize, false);
+  initResize() {
+    window.addEventListener("mousemove", this.startResize, false);
+    window.addEventListener("mouseup", this.stopResize, false);
   }
-  _startResize(e) {
+
+  startResize(e) {
     let width = e.clientX;
     if (width < MIN_WIDTH) {
       width = MIN_WIDTH;
@@ -45,45 +48,48 @@ class App extends Component {
     this.setState({ width });
   }
 
-  _stopResize() {
-    window.removeEventListener('mousemove', this._startResize, false);
-    window.removeEventListener('mouseup', this._stopResize, false);
+  stopResize() {
+    window.removeEventListener("mousemove", this.startResize, false);
+    window.removeEventListener("mouseup", this.stopResize, false);
   }
 
   render() {
+    const { width } = this.state;
+
     const rightTabs = [
       {
-        title: 'JS Code',
-        iconName: 'fab fa-js-square',
-        iconColor: '#FFE933',
+        title: "JS Code",
+        iconName: "fab fa-js-square",
+        iconColor: "#FFE933",
         component: Editor
       }
     ];
 
     const leftTabs = [
       {
-        title: 'Result',
-        iconName: 'fa fa-terminal',
+        title: "Result",
+        iconName: "fa fa-terminal",
         iconWrap: true,
         component: Output,
-        componentProps: { width: this.state.width }
+        componentProps: { width }
       }
     ];
     return (
-      <div className='mainContainer'>
+      <div className="mainContainer">
         <Header />
-
-        <div className='appConainer'>
-          <div style={{ height: '100%', width: this.state.width }}>
+        <div className="appConainer">
+          <div style={{ height: "100%", width }}>
             <Tab tabs={rightTabs} />
           </div>
 
-          <div className='resizer' ref={el => (this._resizer = el)} />
+          <div className="resizer" ref={this.resizer} />
 
           <div>
             <Tab tabs={leftTabs} />
           </div>
         </div>
+
+        <About />
       </div>
     );
   }

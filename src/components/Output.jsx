@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
 
 class Output extends Component {
-  _renderResult() {
+  renderResult() {
     const { error, result } = this.props;
     if (error) {
-      return <div className='error'>{error}</div>;
+      return <div className="error">{error}</div>;
     }
 
     if (result) {
-        return <div>{JSON.stringify(result)}</div>;
+      return <div>{JSON.stringify(result)}</div>;
     }
     return <></>;
   }
@@ -19,17 +21,22 @@ class Output extends Component {
     const windowWith = window.innerWidth - 50;
     const consoleWidth = windowWith - width;
     return (
-      <div style={{ width: consoleWidth }} className='console'>
-        {this._renderResult()}
+      <div style={{ width: consoleWidth }} className="console">
+        {this.renderResult()}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ code }) => {
-  return {
-    result: code.result,
-    error: code.error
-  };
+Output.propTypes = {
+  error: PropTypes.string.isRequired,
+  result: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired
 };
+
+const mapStateToProps = ({ code }) => ({
+  result: code.result,
+  error: code.error
+});
+
 export default connect(mapStateToProps)(Output);

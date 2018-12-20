@@ -1,5 +1,5 @@
-@import '../../node_modules/codemirror/lib/codemirror.css';
-@import '../../node_modules/codemirror/theme/material.css';
+@import "../../node_modules/codemirror/lib/codemirror.css";
+@import "../../node_modules/codemirror/theme/material.css";
 
 html,
 body {
@@ -53,5 +53,5 @@ body {
 }
 
 .error {
-  color: #E54E4E
+  color: #e54e4e;
 }

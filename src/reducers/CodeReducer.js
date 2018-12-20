@@ -1,8 +1,9 @@
-import { CODE_SUCCESS, CODE_ERROR } from '../actions/types';
+import { CODE_SUCCESS, CODE_ERROR, TOGGLE_MODAL } from "../actions/types";
 
 const INITIAL_STATE = {
   result: null,
-  error: null
+  error: null,
+  display: "none"
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -11,6 +12,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, result: action.payload, error: null };
     case CODE_ERROR:
       return { ...state, error: action.payload, result: null };
+    case TOGGLE_MODAL: {
+      const display = state.display === "none" ? "block" : "none";
+      return { ...state, display };
+    }
     default:
       return state;
   }
