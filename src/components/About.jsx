@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import { toggleModal } from "../actions";
 
 class About extends Component {
+  constructor(props) {
+    super(props);
+    this.close = this.close.bind(this);
+  }
+
   close() {
     const { toggleModal } = this.props;
     toggleModal();
@@ -49,7 +54,7 @@ class About extends Component {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={this.close.bind(this)}
+                  onClick={this.close}
                 >
                   Close
                 </button>

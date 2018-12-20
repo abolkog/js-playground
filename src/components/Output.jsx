@@ -29,8 +29,8 @@ class Output extends Component {
 }
 
 Output.propTypes = {
-  error: PropTypes.string.isRequired,
-  result: PropTypes.string.isRequired,
+  error: PropTypes.any,
+  result: PropTypes.any,
   width: PropTypes.number.isRequired
 };
 
