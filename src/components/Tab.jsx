@@ -31,7 +31,10 @@ class Tab extends Component {
             );
           })}
         </ul>
-        <div className="tab-pane fade show active" style={{ height: "94%" }}>
+        <div
+          className="tab-pane fade show active"
+          style={{ height: "94%", overflowY: "scroll" }}
+        >
           <div style={{ height: "100%" }}>
             {tabs.map((tab, index) => {
               const { component: TabComponent, componentProps } = tab;

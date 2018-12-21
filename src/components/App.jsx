@@ -2,11 +2,12 @@ import React, { Component } from "react";
 
 import Editor from "./Editor";
 import Output from "./Output";
-
-import "../styles/App.css";
+import Console from "./Console";
 import Header from "./Header";
 import Tab from "./Tab";
 import About from "./About";
+
+import "../styles/App.css";
 
 const MIN_WIDTH = 100;
 const MAX_WIDTH = 1300;
@@ -14,8 +15,12 @@ const MAX_WIDTH = 1300;
 class App extends Component {
   constructor(props) {
     super(props);
+    const initialWidth = 900;
+    const windowWith = window.innerWidth - 50;
+    const rightWidth = windowWith - initialWidth;
     this.state = {
-      width: 900
+      width: initialWidth,
+      rightWidth
     };
 
     this.resizer = React.createRef();
@@ -54,9 +59,9 @@ class App extends Component {
   }
 
   render() {
-    const { width } = this.state;
+    const { width, rightWidth } = this.state;
 
-    const rightTabs = [
+    const editorTab = [
       {
         title: "JS Code",
         iconName: "fab fa-js-square",
@@ -65,13 +70,20 @@ class App extends Component {
       }
     ];
 
-    const leftTabs = [
+    const outputTab = [
       {
         title: "Result",
+        iconName: "fa fa-laptop-code",
+        component: Output,
+        iconColor: "#89C0F4"
+      }
+    ];
+    const consoleTab = [
+      {
+        title: "Console",
         iconName: "fa fa-terminal",
         iconWrap: true,
-        component: Output,
-        componentProps: { width }
+        component: Console
       }
     ];
     return (
@@ -79,13 +91,26 @@ class App extends Component {
         <Header />
         <div className="appConainer">
           <div style={{ height: "100%", width }}>
-            <Tab tabs={rightTabs} />
+            <Tab tabs={editorTab} />
           </div>
 
           <div className="resizer" ref={this.resizer} />
 
-          <div>
-            <Tab tabs={leftTabs} />
+          <div
+            style={{
+              display: "flex",
+              flex: 1,
+              flexDirection: "column",
+              height: "100%",
+              width: rightWidth
+            }}
+          >
+            <div style={{ minHeight: "50%", height: "50%" }}>
+              <Tab tabs={outputTab} />
+            </div>
+            <div style={{ minHeight: "50%", height: "50%" }}>
+              <Tab tabs={consoleTab} />
+            </div>
           </div>
         </div>
 

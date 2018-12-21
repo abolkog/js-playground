@@ -17,11 +17,8 @@ class Output extends Component {
   }
 
   render() {
-    const { width } = this.props;
-    const windowWith = window.innerWidth - 50;
-    const consoleWidth = windowWith - width;
     return (
-      <div style={{ width: consoleWidth }} className="console">
+      <div style={{ width: "100%" }} className="console">
         {this.renderResult()}
       </div>
     );
@@ -30,8 +27,7 @@ class Output extends Component {
 
 Output.propTypes = {
   error: PropTypes.any,
-  result: PropTypes.any,
-  width: PropTypes.number.isRequired
+  result: PropTypes.any
 };
 
 const mapStateToProps = ({ code }) => ({
