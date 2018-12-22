@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 class Output extends Component {
   renderResult() {
@@ -18,7 +18,7 @@ class Output extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%" }} className="console">
+      <div style={{ width: '100%' }} className="console">
         {this.renderResult()}
       </div>
     );

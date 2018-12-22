@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 class Console extends Component {
   displayConsoleLog() {
@@ -21,11 +21,7 @@ class Console extends Component {
     return <></>;
   }
   render() {
-    return (
-      <div style={{ width: "100%" }} className="console">
-        {this.displayConsoleLog()}
-      </div>
-    );
+    return <div className="console">{this.displayConsoleLog()}</div>;
   }
 }
 

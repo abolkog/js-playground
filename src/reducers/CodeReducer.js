@@ -1,17 +1,17 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 import {
   CODE_SUCCESS,
   CODE_ERROR,
   TOGGLE_MODAL,
   CONSOLE_LOG
-} from "../actions/types";
+} from '../actions/types';
 
 const INITIAL_STATE = {
   result: null,
   logs: [],
   error: null,
-  display: "none"
+  display: 'none'
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -21,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
     case CODE_ERROR:
       return { ...state, error: action.payload, result: null };
     case TOGGLE_MODAL:
-      const display = state.display === "none" ? "block" : "none";
+      const display = state.display === 'none' ? 'block' : 'none';
       return { ...state, display };
     case CONSOLE_LOG:
       //TODO: Change Using array

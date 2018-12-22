@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import Output from './Output';
+import Console from './Console';
+import Header from './Header';
+import Tab from './Tab';
+import About from './About';
 
-import Editor from "./Editor";
-import Output from "./Output";
-import Console from "./Console";
-import Header from "./Header";
-import Tab from "./Tab";
-import About from "./About";
-
-import "../styles/App.css";
+import '../styles/App.css';
+import CodeEditor from './CodeEditor';
 
 const MIN_WIDTH = 100;
 const MAX_WIDTH = 1300;
@@ -30,7 +29,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.resizer.current.addEventListener("mousedown", this.initResize, false);
+    this.resizer.current.addEventListener('mousedown', this.initResize, false);
   }
 
   componentWillUnmount() {
@@ -38,8 +37,8 @@ class App extends Component {
   }
 
   initResize() {
-    window.addEventListener("mousemove", this.startResize, false);
-    window.addEventListener("mouseup", this.stopResize, false);
+    window.addEventListener('mousemove', this.startResize, false);
+    window.addEventListener('mouseup', this.stopResize, false);
   }
 
   startResize(e) {
@@ -54,8 +53,8 @@ class App extends Component {
   }
 
   stopResize() {
-    window.removeEventListener("mousemove", this.startResize, false);
-    window.removeEventListener("mouseup", this.stopResize, false);
+    window.removeEventListener('mousemove', this.startResize, false);
+    window.removeEventListener('mouseup', this.stopResize, false);
   }
 
   render() {
@@ -63,25 +62,25 @@ class App extends Component {
 
     const editorTab = [
       {
-        title: "JS Code",
-        iconName: "fab fa-js-square",
-        iconColor: "#FFE933",
-        component: Editor
+        title: 'JS Code',
+        iconName: 'fab fa-js-square',
+        iconColor: '#FFE933',
+        component: CodeEditor
       }
     ];
 
     const outputTab = [
       {
-        title: "Result",
-        iconName: "fa fa-laptop-code",
+        title: 'Result',
+        iconName: 'fa fa-laptop-code',
         component: Output,
-        iconColor: "#89C0F4"
+        iconColor: '#89C0F4'
       }
     ];
     const consoleTab = [
       {
-        title: "Console",
-        iconName: "fa fa-terminal",
+        title: 'Console',
+        iconName: 'fa fa-terminal',
         iconWrap: true,
         component: Console
       }
@@ -90,7 +89,7 @@ class App extends Component {
       <div className="mainContainer">
         <Header />
         <div className="appConainer">
-          <div style={{ height: "100%", width }}>
+          <div style={{ height: '100%', width }}>
             <Tab tabs={editorTab} />
           </div>
 
@@ -98,17 +97,17 @@ class App extends Component {
 
           <div
             style={{
-              display: "flex",
+              display: 'flex',
               flex: 1,
-              flexDirection: "column",
-              height: "100%",
+              flexDirection: 'column',
+              height: '100%',
               width: rightWidth
             }}
           >
-            <div style={{ minHeight: "50%", height: "50%" }}>
+            <div style={{ minHeight: '50%', height: '50%' }}>
               <Tab tabs={outputTab} />
             </div>
-            <div style={{ minHeight: "50%", height: "50%" }}>
+            <div style={{ minHeight: '50%', height: '50%' }}>
               <Tab tabs={consoleTab} />
             </div>
           </div>

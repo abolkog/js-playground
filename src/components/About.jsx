@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { toggleModal } from "../actions";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { toggleModal } from '../actions';
 
 class About extends Component {
   constructor(props) {
@@ -31,13 +31,13 @@ class About extends Component {
                 </p>
                 <p>
                   You can play around with JavaScript code here, also this
-                  sandbox playground is hooked up diretly with{" "}
+                  sandbox playground is hooked up diretly with{' '}
                   <a
                     href="https://redux.js.org/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {" "}
+                    {' '}
                     Redux
                   </a>
                 </p>

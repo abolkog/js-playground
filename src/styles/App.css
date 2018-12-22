@@ -1,5 +1,5 @@
-@import "../../node_modules/codemirror/lib/codemirror.css";
-@import "../../node_modules/codemirror/theme/material.css";
+@import '../../node_modules/codemirror/lib/codemirror.css';
+@import '../../node_modules/codemirror/theme/material.css';
 
 html,
 body {
@@ -33,24 +33,19 @@ body {
   background-color: #3a3f44;
 }
 
-.ReactCodeMirror,
-.CodeMirror {
-  height: 100%;
-  font-size: 20px;
+.monaco-editor,
+.overflow-guard {
+  width: 100% !important;
 }
-
-.CodeMirror-wrap {
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  word-break: normal;
-}
-
 .console {
   word-wrap: break-word;
   word-break: break-all;
-  padding: 10px;
+  padding: 20px;
   font-size: large;
   font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
 }
 
 .error {

@@ -15,6 +15,7 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin-alt");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
+const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -400,7 +401,11 @@ module.exports = {
         watch: paths.appSrc,
         silent: true,
         formatter: typescriptFormatter
-      })
+      }),
+    // Monaco Webpack Plugin
+    new MonacoWebpackPlugin({
+      languages: ["json", "javascript", "typescript"]
+    })
   ].filter(Boolean),
 
   // Some libraries import Node modules but don't use them in the browser.

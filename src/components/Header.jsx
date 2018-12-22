@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { toggleModal } from "../actions";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { toggleModal } from '../actions';
 
 const Header = ({ toggleModal }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -25,7 +25,7 @@ const Header = ({ toggleModal }) => (
         <li className="nav-item">
           <span
             className="nav-link"
-            style={{ cursor: "pointer" }}
+            style={{ cursor: 'pointer' }}
             onClick={() => toggleModal()}
           >
             About

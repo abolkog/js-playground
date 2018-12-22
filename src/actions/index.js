@@ -1,13 +1,12 @@
-import vm from "vm";
-import { createStore } from "redux";
-import { transform } from "babel-standalone";
-import { CODE_SUCCESS, CODE_ERROR, TOGGLE_MODAL } from "./types";
+import vm from 'vm';
+import { createStore } from 'redux';
+import { transform } from 'babel-standalone';
+import { CODE_SUCCESS, CODE_ERROR, TOGGLE_MODAL } from './types';
 
 export const handleCode = code => {
   return async dispatch => {
     try {
-      const transformed = transform(code, { presets: ["stage-0"] }).code;
-      // const result = eval(transformed);
+      const transformed = transform(code, { presets: ['stage-0'] }).code;
       const result = await runCodeInVM(transformed);
       dispatch({ type: CODE_SUCCESS, payload: result });
     } catch (e) {

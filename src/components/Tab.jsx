@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Tab extends Component {
   renderIcon(iconWrap, iconName, iconColor) {
@@ -17,7 +17,7 @@ class Tab extends Component {
   render() {
     const { tabs } = this.props;
     return (
-      <div style={{ height: "100%" }}>
+      <div style={{ height: '100%' }}>
         <ul className="nav nav-tabs">
           {tabs.map((tab, index) => {
             const { title, iconName, iconColor, iconWrap } = tab;
@@ -31,11 +31,8 @@ class Tab extends Component {
             );
           })}
         </ul>
-        <div
-          className="tab-pane fade show active"
-          style={{ height: "94%", overflowY: "scroll" }}
-        >
-          <div style={{ height: "100%" }}>
+        <div className="tab-pane fade show active" style={{ height: '94%' }}>
+          <div style={{ height: '100%' }}>
             {tabs.map((tab, index) => {
               const { component: TabComponent, componentProps } = tab;
               return <TabComponent key={index} {...componentProps} />;
