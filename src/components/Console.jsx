@@ -1,37 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-import { connect } from 'react-redux';
-
-class Console extends Component {
-  displayConsoleLog() {
-    const { logs } = this.props;
-    if (logs) {
-      return (
-        <>
-          {logs.map((msg, index) => (
-            <div style={{ margin: 10 }} key={index}>
-              {msg}
-            </div>
-          ))}
-        </>
-      );
-    }
-
-    return <></>;
-  }
-  render() {
-    return <div className="console">{this.displayConsoleLog()}</div>;
-  }
-}
-
-Console.propTypes = {
-  logs: PropTypes.any
+const Console = () => {
+  return <div id="console" className="console" />;
 };
 
-const mapStateToProps = ({ code }) => ({
-  logs: code.logs,
-  result: code.result
-});
-
-export default connect(mapStateToProps)(Console);
+export default Console;
