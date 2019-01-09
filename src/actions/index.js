@@ -1,26 +1,13 @@
 import vm from 'vm';
 import { createStore } from 'redux';
-import { transform } from 'babel-standalone';
 import { CODE_SUCCESS, CODE_ERROR, TOGGLE_MODAL } from './types';
 
-export const handleCode = code => {
-  return async dispatch => {
-    try {
-      const transformed = transform(code, { presets: ['stage-0'] }).code;
-      const result = await runCodeInVM(transformed);
-      dispatch({ type: CODE_SUCCESS, payload: result });
-    } catch (e) {
-      dispatch({ type: CODE_ERROR, payload: e.toString() });
-    }
-  };
-};
-
-const runCodeInVM = code => {
-  return new Promise((resolve, reject) => {
+const runCodeInVM = code =>
+  new Promise((resolve, reject) => {
     try {
       const result = vm.runInNewContext(code, {
-        console: console,
-        setTimeout: setTimeout,
+        console,
+        setTimeout,
         Redux: { createStore }
       });
       resolve(result);
@@ -28,6 +15,13 @@ const runCodeInVM = code => {
       reject(e);
     }
   });
-};
 
+export const handleCode = async code => {
+  try {
+    const result = await runCodeInVM(code);
+    return { type: CODE_SUCCESS, payload: result };
+  } catch (e) {
+    return { type: CODE_ERROR, payload: e.toString() };
+  }
+};
 export const toggleModal = () => ({ type: TOGGLE_MODAL });

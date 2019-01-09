@@ -1,6 +1,14 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended"],
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "globals": {
+    "document": true,
+    "window": true
+  },
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "no-underscore-dangle": "off",
+    "no-case-declarations": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
