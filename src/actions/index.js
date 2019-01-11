@@ -1,27 +1,23 @@
-import vm from 'vm';
-import { createStore } from 'redux';
-import { CODE_SUCCESS, CODE_ERROR, TOGGLE_MODAL } from './types';
+import {
+  CODE_RUN_ERROR,
+  CODE_RUN_SUCCESS,
+  UPDATE_CODE,
+  TOGGLE_MODAL,
+  CODE_RUNNING
+} from './types';
 
-const runCodeInVM = code =>
-  new Promise((resolve, reject) => {
-    try {
-      const result = vm.runInNewContext(code, {
-        console,
-        setTimeout,
-        Redux: { createStore }
-      });
-      resolve(result);
-    } catch (e) {
-      reject(e);
-    }
-  });
+import runCodeInVM from '../helpers';
 
-export const handleCode = async code => {
+export const updateCode = code => ({ type: UPDATE_CODE, payload: code });
+
+export const executeCode = code => async dispatch => {
   try {
+    dispatch({ type: CODE_RUNNING });
     const result = await runCodeInVM(code);
-    return { type: CODE_SUCCESS, payload: result };
+    dispatch({ type: CODE_RUN_SUCCESS, payload: result });
   } catch (e) {
-    return { type: CODE_ERROR, payload: e.toString() };
+    dispatch({ type: CODE_RUN_ERROR, payload: e.toString() });
   }
 };
+
 export const toggleModal = () => ({ type: TOGGLE_MODAL });

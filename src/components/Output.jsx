@@ -26,8 +26,8 @@ class Output extends Component {
 }
 
 Output.propTypes = {
-  error: PropTypes.any,
-  result: PropTypes.any
+  error: PropTypes.string.isRequired,
+  result: PropTypes.string.isRequired
 };
 
 const mapStateToProps = ({ code }) => ({

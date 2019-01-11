@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+
 const commonPaths = require('./paths');
 
 module.exports = {
@@ -37,6 +39,7 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: commonPaths.templatePath
-    })
+    }),
+    new MonacoWebpackPlugin()
   ]
 };

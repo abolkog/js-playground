@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleModal } from '../actions';
+import RunButton from './RunButton';
 
 const Header = ({ toggleModal }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -23,15 +24,19 @@ const Header = ({ toggleModal }) => (
     <div className="collapse navbar-collapse" id="navbarColor01">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <span
-            className="nav-link"
+          <button
+            type="button"
+            className="btn btn-secondary"
             style={{ cursor: 'pointer' }}
             onClick={() => toggleModal()}
           >
             About
-          </span>
+          </button>
         </li>
       </ul>
+      <div className="my-2">
+        <RunButton />
+      </div>
     </div>
   </nav>
 );

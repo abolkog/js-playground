@@ -1,17 +1,33 @@
-import { CODE_SUCCESS, CODE_ERROR, TOGGLE_MODAL } from '../actions/types';
+import {
+  CODE_RUN_ERROR,
+  CODE_RUN_SUCCESS,
+  TOGGLE_MODAL,
+  UPDATE_CODE,
+  CODE_RUNNING
+} from '../actions/types';
 
 const INITIAL_STATE = {
-  result: null,
-  error: null,
+  code: '',
+  result: '',
+  error: '',
+  loading: false,
   display: 'none'
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case CODE_SUCCESS:
-      return { ...state, result: action.payload, error: null };
-    case CODE_ERROR:
-      return { ...state, error: action.payload, result: null };
+    case CODE_RUNNING:
+      return { ...state, loading: true };
+    case UPDATE_CODE:
+      return {
+        ...state,
+        code: action.payload,
+        loading: false
+      };
+    case CODE_RUN_SUCCESS:
+      return { ...state, result: action.payload, error: '', loading: false };
+    case CODE_RUN_ERROR:
+      return { ...state, error: action.payload, result: '', loading: false };
     case TOGGLE_MODAL:
       const display = state.display === 'none' ? 'block' : 'none';
       return { ...state, display };

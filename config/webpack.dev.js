@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const commonPaths = require('./paths');
 
@@ -12,18 +13,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css|scss)$/,
+        test: /\.css$/,
         use: [
-          'style-loader',
           {
-            loader: 'css-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              sourceMap: true,
-              modules: true,
-              camelCase: true,
-              localIdentName: '[local]___[hash:base64:5]'
+              publicPath: commonPaths.publicPath
             }
-          }
+          },
+          'css-loader'
         ]
       }
     ]
@@ -34,5 +32,11 @@ module.exports = {
     hot: true,
     port: 3000
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    })
+  ]
 };

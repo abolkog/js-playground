@@ -7,8 +7,10 @@
   },
   "rules": {
     "no-console": "warn",
+    "no-shadow": "off",
     "no-underscore-dangle": "off",
     "no-case-declarations": "off",
+    "class-methods-use-this": "off",
     "import/no-extraneous-dependencies": "off"
   }
 }

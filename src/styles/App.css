@@ -48,3 +48,8 @@ body {
 .error {
   color: #e54e4e;
 }
+
+.test {
+  background: #e54e4e;
+  height: 50px;
+}

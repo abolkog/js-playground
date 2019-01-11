@@ -31,7 +31,7 @@ class About extends Component {
                 </p>
                 <p>
                   You can play around with JavaScript code here, also this
-                  sandbox playground is hooked up diretly with{' '}
+                  sandbox playground is hooked up diretly with
                   <a
                     href="https://redux.js.org/"
                     target="_blank"

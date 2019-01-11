@@ -1,49 +1,45 @@
-// import React, { Component } from 'react';
-// import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
-// import { connect } from 'react-redux';
-// import { handleCode } from '../actions';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import MonacoEditor from 'react-monaco-editor';
+import { connect } from 'react-redux';
+import { updateCode } from '../actions';
 
-// class CodeEditor extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.editorContainer = React.createRef();
-//   }
+class CodeEditor extends Component {
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+  }
 
-//   componentDidMount() {
-//     this.editor = monaco.editor.create(this.editorContainer.current, {
-//       language: 'javascript',
-//       theme: 'vs-dark',
-//       fontSize: 16,
-//       contextmenu: false,
-//       minimap: {
-//         enabled: false
-//       }
-//     });
+  onChange(code) {
+    const { updateCode } = this.props;
+    updateCode(code);
+  }
 
-//     this.editorIsReady();
-//   }
-
-//   editorIsReady() {
-//     const { handleCode } = this.props;
-//     this.editor.onDidChangeModelContent(e => {
-//       const code = this.editor.getValue();
-//       handleCode(code);
-//     });
-//   }
-//   render() {
-//     return <div ref={this.editorContainer} style={{ height: '100%' }} />;
-//   }
-// }
-
-// export default connect(
-//   null,
-//   { handleCode }
-// )(CodeEditor);
-
-import React from 'react';
-
-const CodeEditor = () => {
-  return <div>CodeEditor</div>;
+  render() {
+    const editorOptions = {
+      fontSize: 16,
+      contextmenu: false,
+      minimap: {
+        enabled: false
+      }
+    };
+    return (
+      <MonacoEditor
+        width="100%"
+        height="100%"
+        language="javascript"
+        theme="vs-dark"
+        options={editorOptions}
+        onChange={this.onChange}
+        editorDidMount={editor => editor.focus()}
+      />
+    );
+  }
+}
+CodeEditor.propTypes = {
+  updateCode: PropTypes.func.isRequired
 };
-
-export default CodeEditor;
+export default connect(
+  null,
+  { updateCode }
+)(CodeEditor);

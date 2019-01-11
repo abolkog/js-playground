@@ -1,21 +1,23 @@
 import vm from 'vm';
 import { createStore } from 'redux';
-import { transform } from 'babel-standalone';
+import axios from 'axios';
 
-const runCodeInVm = code => {
-  return new Promise((resolve, reject) => {
+const sandbox = {
+  axios,
+  console,
+  setTimeout,
+  Redux: { createStore }
+};
+
+const runCodeInVM = code =>
+  new Promise((resolve, reject) => {
     try {
-      const transformed = transform(code, { presets: ['stage-0'] }).code;
-      const result = vm.runInNewContext(transformed, {
-        console: console,
-        setTimeout: setTimeout,
-        Redux: { createStore }
-      });
+      const context = vm.createContext(sandbox);
+      const result = vm.runInContext(code, context);
       resolve(result);
     } catch (e) {
       reject(e);
     }
   });
-};
 
-export { runCodeInVm };
+export default runCodeInVM;

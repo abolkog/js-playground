@@ -4,8 +4,6 @@ import Console from './Console';
 import Header from './Header';
 import Tab from './Tab';
 import About from './About';
-
-import '../styles/App.css';
 import CodeEditor from './CodeEditor';
 
 const MIN_WIDTH = 100;
@@ -62,6 +60,7 @@ class App extends Component {
 
     const editorTab = [
       {
+        id: 'editor',
         title: 'JS Code',
         iconName: 'fab fa-js-square',
         iconColor: '#FFE933',
@@ -71,6 +70,7 @@ class App extends Component {
 
     const outputTab = [
       {
+        id: 'result',
         title: 'Result',
         iconName: 'fa fa-laptop-code',
         component: Output,
@@ -79,6 +79,7 @@ class App extends Component {
     ];
     const consoleTab = [
       {
+        id: 'console',
         title: 'Console',
         iconName: 'fa fa-terminal',
         iconWrap: true,
