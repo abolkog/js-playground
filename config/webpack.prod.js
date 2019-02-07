@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const commonPaths = require('./paths');
 
 module.exports = {
@@ -12,26 +11,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css|scss)$/,
+        test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              sourceMap: false,
-              modules: true,
-              camelCase: true,
-              localIdentName: '[local]___[hash:base64:5]'
+              publicPath: commonPaths.publicPath
             }
-          }
+          },
+          'css-loader'
         ]
       }
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([commonPaths.outputPath.split('/').pop()], {
-      root: commonPaths.root
-    }),
     new MiniCssExtractPlugin({
       filename: `${commonPaths.cssFolder}/[name].css`,
       chunkFilename: '[id].css'
