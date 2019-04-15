@@ -23,8 +23,6 @@ class CodeEditor extends Component {
       mode: 'jsx',
       lineNumbers: true,
       lineWrapping: true,
-      styleActiveLine: true,
-
       theme: 'material',
       extraKeys: { 'Ctrl-Space': 'autocomplete' }
     };

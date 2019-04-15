@@ -6,6 +6,7 @@
     "window": true
   },
   "rules": {
+    "no-eval": "off",
     "no-console": "warn",
     "no-shadow": "off",
     "no-underscore-dangle": "off",
