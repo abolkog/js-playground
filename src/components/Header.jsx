@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleModal } from '../actions';
 import RunButton from './RunButton';
+import ClearButton from './ClearButton';
 
 const Header = ({ toggleModal }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -35,6 +36,8 @@ const Header = ({ toggleModal }) => (
         </li>
       </ul>
       <div className="my-2">
+        <ClearButton />
+        <span style={{ marginLeft: 20, marginRight: 20 }} />
         <RunButton />
       </div>
     </div>

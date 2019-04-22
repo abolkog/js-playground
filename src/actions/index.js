@@ -3,7 +3,8 @@ import {
   CODE_RUN_SUCCESS,
   UPDATE_CODE,
   TOGGLE_MODAL,
-  CODE_RUNNING
+  CODE_RUNNING,
+  CLEAR_HISTORY
 } from './types';
 
 import runCodeInVM from '../helpers';
@@ -19,5 +20,7 @@ export const executeCode = code => async dispatch => {
     dispatch({ type: CODE_RUN_ERROR, payload: e.toString() });
   }
 };
+
+export const clearHistory = () => ({ type: CLEAR_HISTORY });
 
 export const toggleModal = () => ({ type: TOGGLE_MODAL });

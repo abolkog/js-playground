@@ -1,4 +1,4 @@
-import { CONSOLE_LOG } from '../actions/types';
+import { CONSOLE_LOG, CLEAR_HISTORY } from '../actions/types';
 
 const INITIAL_STATE = {
   history: []
@@ -10,6 +10,8 @@ export default (state = INITIAL_STATE, action) => {
       const { history } = state;
       if (action.payload) history.push(action.payload);
       return { ...state, history };
+    case CLEAR_HISTORY:
+      return { ...state, history: [] };
     default:
       return state;
   }

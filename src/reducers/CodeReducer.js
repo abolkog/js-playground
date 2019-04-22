@@ -3,7 +3,8 @@ import {
   CODE_RUN_SUCCESS,
   TOGGLE_MODAL,
   UPDATE_CODE,
-  CODE_RUNNING
+  CODE_RUNNING,
+  CLEAR_HISTORY
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -33,6 +34,8 @@ export default (state = INITIAL_STATE, action) => {
     case TOGGLE_MODAL:
       const display = state.display === 'none' ? 'block' : 'none';
       return { ...state, display };
+    case CLEAR_HISTORY:
+      return { ...state, result: [] };
     default:
       return state;
   }
