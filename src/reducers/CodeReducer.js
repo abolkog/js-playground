@@ -25,7 +25,8 @@ export default (state = INITIAL_STATE, action) => {
         loading: false
       };
     case CODE_RUN_SUCCESS:
-      return { ...state, result: action.payload, error: '', loading: false };
+      const result = action.payload ? `${action.payload}` : '';
+      return { ...state, result, error: '', loading: false };
     case CODE_RUN_ERROR:
       return { ...state, error: action.payload, result: '', loading: false };
     case TOGGLE_MODAL:
