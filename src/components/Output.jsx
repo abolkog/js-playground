@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Output extends Component {
+  createKey(index) {
+    return `key${index}`;
+  }
+
   renderResult() {
     const { error, result } = this.props;
     if (error) {
@@ -11,7 +15,7 @@ class Output extends Component {
 
     if (result.length > 0) {
       return result.map((item, index) => (
-        <div key={index}>
+        <div key={this.createKey(index)}>
           <pre>
             <span style={{ marginRight: 5 }}>&#x2023;</span>
 

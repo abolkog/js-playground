@@ -4,7 +4,8 @@ const commonPaths = require('./paths');
 module.exports = {
   mode: 'production',
   output: {
-    filename: `${commonPaths.jsFolder}/[name].[hash].js`,
+    globalObject: 'self',
+    filename: '[name].[hash].js',
     path: commonPaths.outputPath,
     chunkFilename: '[name].[chunkhash].js'
   },
@@ -26,7 +27,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${commonPaths.cssFolder}/[name].css`,
+      filename: '[name].css',
       chunkFilename: '[id].css'
     })
   ],

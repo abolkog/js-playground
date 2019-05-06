@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Console extends Component {
+  createKey(index) {
+    return `key${index}`;
+  }
+
   showConsoleHistory() {
     const { history } = this.props;
 
     if (history.length > 0) {
       return history.map((item, index) => (
-        <div key={index}>
+        <div key={this.createKey(index)}>
           <pre>
             <span style={{ marginRight: 5 }}>&#8250;</span>
 

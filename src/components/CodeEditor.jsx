@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as CodeMirror from 'codemirror';
-import '../../node_modules/codemirror/mode/jsx/jsx';
-import '../../node_modules/codemirror/lib/codemirror.css';
-import '../../node_modules/codemirror/theme/material.css';
-import '../../node_modules/codemirror/addon/hint/show-hint';
-import '../../node_modules/codemirror/addon/hint/show-hint.css';
-import '../../node_modules/codemirror/addon/hint/javascript-hint';
-
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import { connect } from 'react-redux';
 import { updateCode } from '../actions';
 
@@ -15,34 +8,42 @@ class CodeEditor extends Component {
   constructor(props) {
     super(props);
     this.editorRef = React.createRef();
-    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
-    const editorOptions = {
-      mode: 'jsx',
-      lineNumbers: true,
-      lineWrapping: true,
-      theme: 'material',
-      extraKeys: { 'Ctrl-Space': 'autocomplete' }
+    const editorConfig = {
+      value: null,
+      language: 'javascript',
+      fontSize: 20,
+      theme: 'vs-dark',
+      minimap: {
+        enabled: false
+      }
     };
-    this.editor = CodeMirror.fromTextArea(
-      this.editorRef.current,
-      editorOptions
-    );
-    this.editor.on('change', this.onChange);
+
+    this.editor = monaco.editor.create(this.editorRef.current, editorConfig);
+    monaco.editor.setModelLanguage(this.editor.getModel(), 'javascript');
+    this.editor.layout();
+    this.editorIsReady(this.editor);
   }
 
-  onChange(code) {
+  componentWillUnmount() {
+    if (this.editor) {
+      this.editor.dispose();
+    }
+  }
+
+  editorIsReady(editor) {
     const { updateCode } = this.props;
-    updateCode(code.getValue());
+    editor.onDidChangeModelContent(() => {
+      const code = editor.getValue();
+      updateCode(code);
+    });
   }
 
   render() {
     return (
-      <div style={{ width: '100%', height: '100%' }}>
-        <textarea ref={this.editorRef} defaultValue="//Write code here" />
-      </div>
+      <div ref={this.editorRef} style={{ width: '100%', height: '100%' }} />
     );
   }
 }

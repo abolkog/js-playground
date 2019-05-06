@@ -30,15 +30,9 @@ body {
   background-color: #3a3f44;
 }
 
-.CodeMirror {
-  height: 100%;
-  font-size: 20px;
-}
-
-.CodeMirror-wrap {
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  word-break: normal;
+.monaco-editor,
+.overflow-guard {
+  width: 100% !important;
 }
 
 .console {
