@@ -3,6 +3,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleModal } from '../actions';
 
+const GLOBAL_LIBS = [
+  {
+    name: 'redux',
+    url: 'https://redux.js.org/',
+    use: 'Redux'
+  },
+  {
+    name: 'moment.js',
+    url: 'https://momentjs.com/',
+    use: 'moment'
+  },
+  {
+    name: 'lodash',
+    url: 'http://lodash.com',
+    use: '_'
+  },
+  {
+    name: 'axios',
+    url: 'https://github.com/axios/axios',
+    use: 'axios'
+  }
+];
+
 class About extends Component {
   constructor(props) {
     super(props);
@@ -31,15 +54,29 @@ class About extends Component {
                 </p>
                 <p>
                   You can play around with JavaScript code here, also this
-                  sandbox playground is hooked up diretly with
-                  <a
-                    href="https://redux.js.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {' '}
-                    Redux
-                  </a>
+                  sandbox playground is hooked up directly with
+                  <ul>
+                    {GLOBAL_LIBS.map(lib => (
+                      <li key={lib.name}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            flex: 1,
+                            justifyContent: 'space-between'
+                          }}
+                        >
+                          <a
+                            href={lib.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {lib.name}
+                          </a>
+                          <span>Use as {lib.use}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </p>
                 <p>Enjoy</p>
                 <a
