@@ -49,3 +49,7 @@ body {
 .error {
   color: #e54e4e;
 }
+
+.small-text {
+  font-size: 11px;
+}

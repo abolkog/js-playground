@@ -4,7 +4,8 @@ import {
   UPDATE_CODE,
   TOGGLE_MODAL,
   CODE_RUNNING,
-  CLEAR_HISTORY
+  CLEAR_HISTORY,
+  UPDATE_EDITOR_THEME
 } from './types';
 
 import runCodeInVM from '../helpers';
@@ -24,3 +25,8 @@ export const executeCode = code => async dispatch => {
 export const clearHistory = () => ({ type: CLEAR_HISTORY });
 
 export const toggleModal = () => ({ type: TOGGLE_MODAL });
+
+export const updateEditorTheme = theme => ({
+  type: UPDATE_EDITOR_THEME,
+  payload: theme
+});

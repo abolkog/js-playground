@@ -11,11 +11,12 @@ class CodeEditor extends Component {
   }
 
   componentDidMount() {
+    const { theme } = this.props;
     const editorConfig = {
       value: null,
       language: 'javascript',
       fontSize: 20,
-      theme: 'vs-dark',
+      theme,
       minimap: {
         enabled: false
       }
@@ -23,8 +24,16 @@ class CodeEditor extends Component {
 
     this.editor = monaco.editor.create(this.editorRef.current, editorConfig);
     monaco.editor.setModelLanguage(this.editor.getModel(), 'javascript');
+
     this.editor.layout();
     this.editorIsReady(this.editor);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { theme } = this.props;
+    if (prevProps.theme !== theme) {
+      monaco.editor.setTheme(theme);
+    }
   }
 
   componentWillUnmount() {
@@ -48,6 +57,17 @@ class CodeEditor extends Component {
   }
 }
 CodeEditor.propTypes = {
-  updateCode: PropTypes.func.isRequired
+  updateCode: PropTypes.func.isRequired,
+  theme: PropTypes.string
 };
-export default connect(null, { updateCode })(CodeEditor);
+
+CodeEditor.defaultProps = {
+  theme: 'vs-dark'
+};
+
+const mapStateToProps = ({ code }) => {
+  return {
+    theme: code.theme
+  };
+};
+export default connect(mapStateToProps, { updateCode })(CodeEditor);

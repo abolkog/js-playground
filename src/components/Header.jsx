@@ -1,14 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { toggleModal } from '../actions';
+import { toggleModal, updateEditorTheme } from '../actions';
 import RunButton from './RunButton';
 import ClearButton from './ClearButton';
 
-const Header = ({ toggleModal }) => (
+const THEMES = [
+  {
+    id: 1,
+    label: 'Dark Theme',
+    value: 'vs-dark'
+  },
+  {
+    id: 2,
+    label: 'Light Theme',
+    value: 'vs-light'
+  }
+];
+
+const Header = ({ toggleModal, updateEditorTheme, activeTheme }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
     <a className="navbar-brand" href="/">
-      JS PlayGround
+      JS PlayGround{' '}
+      <span className="small-text">V{process.env.APP_VERSION}</span>
     </a>
     <button
       className="navbar-toggler"
@@ -36,6 +50,21 @@ const Header = ({ toggleModal }) => (
         </li>
       </ul>
       <div className="my-2">
+        <div className="btn-group" role="group">
+          {THEMES.map(item => (
+            <button
+              key={item.id}
+              type="button"
+              className={`btn btn-${
+                activeTheme === item.value ? 'warning' : ' default'
+              }`}
+              onClick={() => updateEditorTheme(item.value)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+        <span style={{ marginLeft: 20, marginRight: 20 }} />
         <ClearButton />
         <span style={{ marginLeft: 20, marginRight: 20 }} />
         <RunButton />
@@ -45,6 +74,16 @@ const Header = ({ toggleModal }) => (
 );
 
 Header.propTypes = {
-  toggleModal: PropTypes.func.isRequired
+  toggleModal: PropTypes.func.isRequired,
+  updateEditorTheme: PropTypes.func.isRequired,
+  activeTheme: PropTypes.string.isRequired
 };
-export default connect(null, { toggleModal })(Header);
+
+const mapStateToProps = ({ code }) => {
+  return {
+    activeTheme: code.theme
+  };
+};
+export default connect(mapStateToProps, { toggleModal, updateEditorTheme })(
+  Header
+);

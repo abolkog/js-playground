@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { toggleModal } from '../actions';
 
 const GLOBAL_LIBS = [
@@ -52,7 +53,7 @@ class About extends Component {
                   JS Playground is an experimental JavaScript PlayGround created
                   for Education and Testing Purposes
                 </p>
-                <p>
+                <div>
                   You can play around with JavaScript code here, also this
                   sandbox playground is hooked up directly with
                   <ul>
@@ -77,15 +78,24 @@ class About extends Component {
                       </li>
                     ))}
                   </ul>
-                </p>
+                </div>
                 <p>Enjoy</p>
-                <a
-                  href="https://abolkog.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Khalid Elshafie
-                </a>
+                <div>
+                  <div className="float-left">
+                    <a
+                      href="https://abolkog.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Khalid Elshafie
+                    </a>
+                  </div>
+                  <div className="float-right">
+                    <span className="small-text">
+                      V{process.env.APP_VERSION}
+                    </span>
+                  </div>
+                </div>
               </div>
               <div className="modal-footer">
                 <button

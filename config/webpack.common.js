@@ -63,6 +63,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.APP_VERSION': JSON.stringify(
+        // eslint-disable-next-line global-require
+        require('../package.json').version
+      )
     })
   ]
 };

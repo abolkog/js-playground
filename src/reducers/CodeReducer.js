@@ -5,7 +5,8 @@ import {
   TOGGLE_MODAL,
   UPDATE_CODE,
   CODE_RUNNING,
-  CLEAR_HISTORY
+  CLEAR_HISTORY,
+  UPDATE_EDITOR_THEME
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -13,7 +14,8 @@ const INITIAL_STATE = {
   result: [],
   error: '',
   loading: false,
-  display: 'none'
+  display: 'none',
+  theme: 'vs-dark'
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -43,6 +45,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, display };
     case CLEAR_HISTORY:
       return { ...state, result: [] };
+    case UPDATE_EDITOR_THEME:
+      return { ...state, theme: action.payload };
     default:
       return state;
   }

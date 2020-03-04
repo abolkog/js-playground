@@ -15,7 +15,4 @@ ClearButton.propTypes = {
   clearHistory: PropTypes.func.isRequired
 };
 
-export default connect(
-  null,
-  { clearHistory }
-)(ClearButton);
+export default connect(null, { clearHistory })(ClearButton);
