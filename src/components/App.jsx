@@ -12,7 +12,7 @@ const MAX_WIDTH = 1300;
 class App extends Component {
   constructor(props) {
     super(props);
-    const initialWidth = 900;
+    const initialWidth = 1300;
     const windowWith = window.innerWidth - 50;
     const rightWidth = windowWith - initialWidth;
     this.state = {

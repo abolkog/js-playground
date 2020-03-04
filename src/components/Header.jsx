@@ -47,7 +47,4 @@ const Header = ({ toggleModal }) => (
 Header.propTypes = {
   toggleModal: PropTypes.func.isRequired
 };
-export default connect(
-  null,
-  { toggleModal }
-)(Header);
+export default connect(null, { toggleModal })(Header);

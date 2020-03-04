@@ -50,7 +50,4 @@ class CodeEditor extends Component {
 CodeEditor.propTypes = {
   updateCode: PropTypes.func.isRequired
 };
-export default connect(
-  null,
-  { updateCode }
-)(CodeEditor);
+export default connect(null, { updateCode })(CodeEditor);

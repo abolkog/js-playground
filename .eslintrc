@@ -13,6 +13,7 @@
     "no-case-declarations": "off",
     "class-methods-use-this": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

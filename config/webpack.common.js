@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const commonPaths = require('./paths');
 
@@ -21,6 +22,22 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         exclude: /(node_modules)/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: commonPaths.publicPath
+            }
+          },
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.(woff|woff2|ttf|eot)$/,
+        loader: 'file-loader'
       }
     ]
   },
@@ -42,6 +59,10 @@ module.exports = {
     }),
     new MonacoWebpackPlugin({
       languages: ['javascript', 'typescript']
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     })
   ]
 };

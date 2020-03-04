@@ -30,7 +30,4 @@ const mapStateToProps = ({ code }) => ({
   code: code.code
 });
 
-export default connect(
-  mapStateToProps,
-  { executeCode }
-)(RunButton);
+export default connect(mapStateToProps, { executeCode })(RunButton);

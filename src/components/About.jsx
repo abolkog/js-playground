@@ -110,7 +110,4 @@ About.propTypes = {
 };
 
 const mapStateToProps = ({ code }) => ({ display: code.display });
-export default connect(
-  mapStateToProps,
-  { toggleModal }
-)(About);
+export default connect(mapStateToProps, { toggleModal })(About);
