@@ -33,8 +33,8 @@ Console.propTypes = {
   history: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
-const mapStateToProps = ({ logs }) => ({
-  history: logs.history.map(item => item)
+const mapStateToProps = ({ common }) => ({
+  history: common.history.map(item => item)
 });
 
 export default connect(mapStateToProps)(Console);

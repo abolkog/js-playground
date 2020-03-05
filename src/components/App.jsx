@@ -7,12 +7,12 @@ import About from './About';
 import CodeEditor from './CodeEditor';
 
 const MIN_WIDTH = 100;
-const MAX_WIDTH = 1300;
+const MAX_WIDTH = 1400;
 
 class App extends Component {
   constructor(props) {
     super(props);
-    const initialWidth = 1300;
+    const initialWidth = 1400;
     const windowWith = window.innerWidth - 50;
     const rightWidth = windowWith - initialWidth;
     this.state = {

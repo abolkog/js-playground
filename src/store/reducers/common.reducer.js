@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { CONSOLE_LOG, CLEAR_HISTORY } from '../actions/types';
+import { commonTypes } from '../types';
 
 const INITIAL_STATE = {
   history: []
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case CONSOLE_LOG:
+    case commonTypes.CONSOLE_LOG:
       const { history } = state;
       if (action.payload) {
         if (!_.isString(action.payload)) {
@@ -17,7 +17,7 @@ export default (state = INITIAL_STATE, action) => {
         }
       }
       return { ...state, history };
-    case CLEAR_HISTORY:
+    case commonTypes.CLEAR_HISTORY:
       return { ...state, history: [] };
     default:
       return state;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import { connect } from 'react-redux';
-import { updateCode } from '../actions';
+import { codeActions } from '../store/actions';
 
 class CodeEditor extends Component {
   constructor(props) {
@@ -43,21 +43,18 @@ class CodeEditor extends Component {
   }
 
   editorIsReady(editor) {
-    const { updateCode } = this.props;
+    const { dispatch } = this.props;
     editor.onDidChangeModelContent(() => {
       const code = editor.getValue();
-      updateCode(code);
+      dispatch(codeActions.updateCode(code));
     });
   }
 
   render() {
-    return (
-      <div ref={this.editorRef} style={{ width: '100%', height: '100%' }} />
-    );
+    return <div ref={this.editorRef} style={{ width: '100%', height: '100%' }} />;
   }
 }
 CodeEditor.propTypes = {
-  updateCode: PropTypes.func.isRequired,
   theme: PropTypes.string
 };
 
@@ -70,4 +67,4 @@ const mapStateToProps = ({ code }) => {
     theme: code.theme
   };
 };
-export default connect(mapStateToProps, { updateCode })(CodeEditor);
+export default connect(mapStateToProps)(CodeEditor);

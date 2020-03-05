@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { toggleModal, updateEditorTheme } from '../actions';
+import { commonActions, codeActions } from '../store/actions';
+
 import RunButton from './RunButton';
 import ClearButton from './ClearButton';
 
@@ -18,11 +19,10 @@ const THEMES = [
   }
 ];
 
-const Header = ({ toggleModal, updateEditorTheme, activeTheme }) => (
+const Header = ({ dispatch, activeTheme }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
     <a className="navbar-brand" href="/">
-      JS PlayGround{' '}
-      <span className="small-text">V{process.env.APP_VERSION}</span>
+      JS PlayGround <span className="small-text">V{process.env.APP_VERSION}</span>
     </a>
     <button
       className="navbar-toggler"
@@ -43,7 +43,7 @@ const Header = ({ toggleModal, updateEditorTheme, activeTheme }) => (
             type="button"
             className="btn btn-secondary"
             style={{ cursor: 'pointer' }}
-            onClick={() => toggleModal()}
+            onClick={() => dispatch(commonActions.toggleModal())}
           >
             About
           </button>
@@ -55,10 +55,8 @@ const Header = ({ toggleModal, updateEditorTheme, activeTheme }) => (
             <button
               key={item.id}
               type="button"
-              className={`btn btn-${
-                activeTheme === item.value ? 'warning' : ' default'
-              }`}
-              onClick={() => updateEditorTheme(item.value)}
+              className={`btn btn-${activeTheme === item.value ? 'warning' : ' default'}`}
+              onClick={() => dispatch(codeActions.updateEditorTheme(item.value))}
             >
               {item.label}
             </button>
@@ -74,8 +72,6 @@ const Header = ({ toggleModal, updateEditorTheme, activeTheme }) => (
 );
 
 Header.propTypes = {
-  toggleModal: PropTypes.func.isRequired,
-  updateEditorTheme: PropTypes.func.isRequired,
   activeTheme: PropTypes.string.isRequired
 };
 
@@ -84,6 +80,4 @@ const mapStateToProps = ({ code }) => {
     activeTheme: code.theme
   };
 };
-export default connect(mapStateToProps, { toggleModal, updateEditorTheme })(
-  Header
-);
+export default connect(mapStateToProps)(Header);

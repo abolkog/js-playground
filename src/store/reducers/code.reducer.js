@@ -1,13 +1,5 @@
 import _ from 'lodash';
-import {
-  CODE_RUN_ERROR,
-  CODE_RUN_SUCCESS,
-  TOGGLE_MODAL,
-  UPDATE_CODE,
-  CODE_RUNNING,
-  CLEAR_HISTORY,
-  UPDATE_EDITOR_THEME
-} from '../actions/types';
+import { codeTypes, commonTypes } from '../types';
 
 const INITIAL_STATE = {
   code: '',
@@ -20,15 +12,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case CODE_RUNNING:
+    case codeTypes.CODE_RUNNING:
       return { ...state, loading: true };
-    case UPDATE_CODE:
-      return {
-        ...state,
-        code: action.payload,
-        loading: false
-      };
-    case CODE_RUN_SUCCESS:
+    case codeTypes.UPDATE_CODE:
+      return { ...state, code: action.payload, loading: false };
+    case codeTypes.CODE_RUN_SUCCESS:
       const { result } = state;
       if (action.payload) {
         if (!_.isString(action.payload)) {
@@ -38,14 +26,14 @@ export default (state = INITIAL_STATE, action) => {
         }
       }
       return { ...state, result, error: '', loading: false };
-    case CODE_RUN_ERROR:
+    case codeTypes.CODE_RUN_ERROR:
       return { ...state, error: action.payload, result: [], loading: false };
-    case TOGGLE_MODAL:
+    case codeTypes.TOGGLE_MODAL:
       const display = state.display === 'none' ? 'block' : 'none';
       return { ...state, display };
-    case CLEAR_HISTORY:
+    case commonTypes.CLEAR_HISTORY:
       return { ...state, result: [] };
-    case UPDATE_EDITOR_THEME:
+    case codeTypes.UPDATE_EDITOR_THEME:
       return { ...state, theme: action.payload };
     default:
       return state;
