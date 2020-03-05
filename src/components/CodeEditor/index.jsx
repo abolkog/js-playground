@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import { connect } from 'react-redux';
-import { codeActions } from '../store/actions';
+import { codeActions } from '../../store/actions';
 
 class CodeEditor extends Component {
   constructor(props) {

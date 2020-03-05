@@ -1,23 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { commonActions, codeActions } from '../store/actions';
-
-import RunButton from './RunButton';
-import ClearButton from './ClearButton';
-
-const THEMES = [
-  {
-    id: 1,
-    label: 'Dark Theme',
-    value: 'vs-dark'
-  },
-  {
-    id: 2,
-    label: 'Light Theme',
-    value: 'vs-light'
-  }
-];
+import { commonActions, codeActions } from '../../store/actions';
+import RunButton from '../RunButton';
+import ClearButton from '../ClearButton';
+import THEMES from './util';
 
 const Header = ({ dispatch, activeTheme }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">

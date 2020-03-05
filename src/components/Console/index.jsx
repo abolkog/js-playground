@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-class Console extends Component {
-  createKey(index) {
+const Console = ({ history }) => {
+  const createKey = index => {
     return `key${index}`;
+  };
+
+  if (history.length === 0) {
+    return <></>;
   }
-
-  showConsoleHistory() {
-    const { history } = this.props;
-
-    if (history.length > 0) {
-      return history.map((item, index) => (
-        <div key={this.createKey(index)}>
+  return (
+    <div className="console">
+      {history.map((item, index) => (
+        <div key={createKey(index)}>
           <pre>
             <span style={{ marginRight: 5 }}>&#8250;</span>
 
             <span>{item}</span>
           </pre>
         </div>
-      ));
-    }
-    return <></>;
-  }
-
-  render() {
-    return <div className="console">{this.showConsoleHistory()}</div>;
-  }
-}
+      ))}
+    </div>
+  );
+};
 
 Console.propTypes = {
   history: PropTypes.arrayOf(PropTypes.any).isRequired

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { codeActions } from '../store/actions';
+import { codeActions } from '../../store/actions';
 
 const RunButton = ({ loading, dispatch, code }) => (
   <button

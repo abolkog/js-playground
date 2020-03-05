@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Output from './Output';
-import Console from './Console';
-import Header from './Header';
-import Tab from './Tab';
-import About from './About';
-import CodeEditor from './CodeEditor';
+import Header from '../Header';
+import Tab from '../Tab';
+import About from '../About';
+
+import { editorTab, consoleTab, outputTab } from './tabs';
 
 const MIN_WIDTH = 100;
 const MAX_WIDTH = 1400;
@@ -19,11 +18,7 @@ class App extends Component {
       width: initialWidth,
       rightWidth
     };
-
     this.resizer = React.createRef();
-    this.initResize = this.initResize.bind(this);
-    this.startResize = this.startResize.bind(this);
-    this.stopResize = this.stopResize.bind(this);
   }
 
   componentDidMount() {
@@ -34,12 +29,12 @@ class App extends Component {
     this.stopResize();
   }
 
-  initResize() {
+  initResize = () => {
     window.addEventListener('mousemove', this.startResize, false);
     window.addEventListener('mouseup', this.stopResize, false);
-  }
+  };
 
-  startResize(e) {
+  startResize = e => {
     let width = e.clientX;
     if (width < MIN_WIDTH) {
       width = MIN_WIDTH;
@@ -48,44 +43,16 @@ class App extends Component {
       width = MAX_WIDTH;
     }
     this.setState({ width });
-  }
+  };
 
-  stopResize() {
+  stopResize = () => {
     window.removeEventListener('mousemove', this.startResize, false);
     window.removeEventListener('mouseup', this.stopResize, false);
-  }
+  };
 
   render() {
     const { width, rightWidth } = this.state;
 
-    const editorTab = [
-      {
-        id: 'editor',
-        title: 'JS Code',
-        iconName: 'fab fa-js-square',
-        iconColor: '#FFE933',
-        component: CodeEditor
-      }
-    ];
-
-    const outputTab = [
-      {
-        id: 'result',
-        title: 'Result',
-        iconName: 'fa fa-laptop-code',
-        component: Output,
-        iconColor: '#89C0F4'
-      }
-    ];
-    const consoleTab = [
-      {
-        id: 'console',
-        title: 'Console',
-        iconName: 'fa fa-terminal',
-        iconWrap: true,
-        component: Console
-      }
-    ];
     return (
       <div className="mainContainer">
         <Header />

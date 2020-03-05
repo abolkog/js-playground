@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { commonActions } from '../store/actions';
+import { commonActions } from '../../store/actions';
 
 const ClearButton = ({ dispatch }) => (
   <button
