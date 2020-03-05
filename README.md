@@ -1,6 +1,10 @@
-## js-playground
+## js-playground (JavaScript Playground)
 
-A simple JavaScript playground hooked up with few libraries for quick code testing
+![GitHub package.json version](https://img.shields.io/github/package-json/v/abolkog/js-playground)
+
+A simple JavaScript playground / code sandbox hooked up with few libraries for quick code testing
+
+![Sample](https://user-images.githubusercontent.com/3861725/75946297-d6600380-5ef0-11ea-9b59-794ae8ec613b.png)
 
 ## Available Libraries
 

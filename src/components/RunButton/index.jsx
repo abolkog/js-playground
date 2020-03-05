@@ -5,6 +5,9 @@ import { codeActions } from '../../store/actions';
 
 const RunButton = ({ loading, dispatch, code }) => (
   <button
+    data-toggle="tooltip"
+    data-placement="top"
+    title="Run Code (CtrCmd + R)"
     onClick={() => dispatch(codeActions.executeCode(code))}
     disabled={loading}
     className="btn btn-success"

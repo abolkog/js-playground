@@ -11,7 +11,7 @@ class CodeEditor extends Component {
   }
 
   componentDidMount() {
-    const { theme } = this.props;
+    const { theme, dispatch } = this.props;
     const editorConfig = {
       value: null,
       language: 'javascript',
@@ -24,8 +24,19 @@ class CodeEditor extends Component {
 
     this.editor = monaco.editor.create(this.editorRef.current, editorConfig);
     monaco.editor.setModelLanguage(this.editor.getModel(), 'javascript');
-
     this.editor.layout();
+    this.editor.addAction({
+      id: 'run-code',
+      label: 'Run The Code',
+      keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_R],
+      contextMenuGroupId: 'navigation',
+      contextMenuOrder: 1,
+      run: () => {
+        const { code } = this.props;
+        dispatch(codeActions.executeCode(code));
+      }
+    });
+
     this.editorIsReady(this.editor);
   }
 
@@ -57,8 +68,10 @@ class CodeEditor extends Component {
     return <div ref={this.editorRef} style={{ width: '100%', height: '100%' }} />;
   }
 }
+
 CodeEditor.propTypes = {
   theme: PropTypes.string,
+  code: PropTypes.string.isRequired,
   sample: PropTypes.string.isRequired
 };
 
@@ -69,7 +82,8 @@ CodeEditor.defaultProps = {
 const mapStateToProps = ({ code }) => {
   return {
     theme: code.theme,
-    sample: code.sample
+    sample: code.sample,
+    code: code.code
   };
 };
 export default connect(mapStateToProps)(CodeEditor);
