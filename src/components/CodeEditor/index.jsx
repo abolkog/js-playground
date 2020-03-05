@@ -30,9 +30,12 @@ class CodeEditor extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { theme } = this.props;
+    const { theme, sample } = this.props;
     if (prevProps.theme !== theme) {
       monaco.editor.setTheme(theme);
+    }
+    if (prevProps.sample !== sample) {
+      this.editor.setValue(sample);
     }
   }
 
@@ -55,7 +58,8 @@ class CodeEditor extends Component {
   }
 }
 CodeEditor.propTypes = {
-  theme: PropTypes.string
+  theme: PropTypes.string,
+  sample: PropTypes.string.isRequired
 };
 
 CodeEditor.defaultProps = {
@@ -64,7 +68,8 @@ CodeEditor.defaultProps = {
 
 const mapStateToProps = ({ code }) => {
   return {
-    theme: code.theme
+    theme: code.theme,
+    sample: code.sample
   };
 };
 export default connect(mapStateToProps)(CodeEditor);

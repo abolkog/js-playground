@@ -3,6 +3,8 @@ import { codeTypes, commonTypes } from '../types';
 
 const INITIAL_STATE = {
   code: '',
+  sample: '',
+  sampleName: '',
   result: [],
   error: '',
   loading: false,
@@ -29,9 +31,12 @@ export default (state = INITIAL_STATE, action) => {
     case codeTypes.CODE_RUN_ERROR:
       return { ...state, error: action.payload, result: [], loading: false };
     case commonTypes.CLEAR_HISTORY:
-      return { ...state, result: [] };
+      return { ...state, sample: '', sampleName: '', result: [] };
     case codeTypes.UPDATE_EDITOR_THEME:
       return { ...state, theme: action.payload };
+    case codeTypes.LOAD_CODE_SAMPLE:
+      const { sample, sampleName } = action.payload;
+      return { ...state, sample, sampleName };
     default:
       return state;
   }

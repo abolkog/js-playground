@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Redux Sample",
+    "code": "// Redux example\n\nconst reducer = (state = { count: 0 }, action) => {\n\tswitch(action.type) {\n\t\tcase 'INCREMENT': return { ...state, count: state.count + action.payload };\n\t\tdefault: return state;\n\t}\n}\n\nconst store = Redux.createStore(reducer);\n\nconst incrementByTwoAction = {type: 'INCREMENT', payload: 2 };\n\nconsole.log(`Before Dispatching: ${store.getState().count}`)\n\nstore.dispatch(incrementByTwoAction);\n\nconsole.log(`After Dispatching:  ${store.getState().count}`)\n"
+  },
+  {
+    "id": 2,
+    "name": "Moment",
+    "code": "// Moment example. Reference moment in the code as `moment`\n\n// Moment\nconst now = moment().format('MMMM Do YYYY, h:mm:ss a');\n\n// Moment Time Zone\nconst nowInSudan = moment().tz('Africa/Khartoum').format('MMMM Do YYYY, h:mm:ss a');\n\n// Print it to the console\nconsole.log(now);\n\n// Print it to the output\nnowInSudan;"
+  },
+  {
+    "id": 3,
+    "name": "Axios",
+    "code": "// axios example. Reference axios in the code as `axios`\n\nconst loadTVShowCast = async () => {\n\tconst tvShowId = 413; // FRIENDS TV Show\n\tconst url = `http://api.tvmaze.com/shows/${tvShowId}/cast`;\n\tconst { data } = await axios.get(url);\n\tconsole.log(data);\n}\n\nloadTVShowCast();"
+  },
+  {
+    "id": 4,
+    "name": "lodash",
+    "code": "// Lodash example. Reference lodash in the code as `_`\n\nconst  sample = _.chunk(['a', 'b', 'c', 'd'], 2);\nsample"
+  }
+]

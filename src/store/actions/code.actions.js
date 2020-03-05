@@ -3,6 +3,11 @@ import runCodeInVM from '../../helpers';
 
 const updateCode = code => ({ type: codeTypes.UPDATE_CODE, payload: code });
 
+const loadCodeSample = (sampleName, sample) => ({
+  type: codeTypes.LOAD_CODE_SAMPLE,
+  payload: { sample, sampleName }
+});
+
 const executeCode = code => async dispatch => {
   try {
     dispatch({ type: codeTypes.CODE_RUNNING });
@@ -18,5 +23,6 @@ const updateEditorTheme = theme => ({ type: codeTypes.UPDATE_EDITOR_THEME, paylo
 export const codeActions = {
   updateCode,
   executeCode,
-  updateEditorTheme
+  updateEditorTheme,
+  loadCodeSample
 };
