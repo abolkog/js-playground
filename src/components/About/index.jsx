@@ -72,5 +72,5 @@ About.propTypes = {
   display: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({ code }) => ({ display: code.display });
+const mapStateToProps = ({ common }) => ({ display: common.display });
 export default connect(mapStateToProps)(About);

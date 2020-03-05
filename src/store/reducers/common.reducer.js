@@ -2,7 +2,8 @@ import _ from 'lodash';
 import { commonTypes } from '../types';
 
 const INITIAL_STATE = {
-  history: []
+  history: [],
+  display: 'none'
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +20,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, history };
     case commonTypes.CLEAR_HISTORY:
       return { ...state, history: [] };
+    case commonTypes.TOGGLE_MODAL:
+      const display = state.display === 'none' ? 'block' : 'none';
+      return { ...state, display };
     default:
       return state;
   }

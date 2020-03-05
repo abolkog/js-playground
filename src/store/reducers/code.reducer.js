@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   result: [],
   error: '',
   loading: false,
-  display: 'none',
+
   theme: 'vs-dark'
 };
 
@@ -28,9 +28,6 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, result, error: '', loading: false };
     case codeTypes.CODE_RUN_ERROR:
       return { ...state, error: action.payload, result: [], loading: false };
-    case codeTypes.TOGGLE_MODAL:
-      const display = state.display === 'none' ? 'block' : 'none';
-      return { ...state, display };
     case commonTypes.CLEAR_HISTORY:
       return { ...state, result: [] };
     case codeTypes.UPDATE_EDITOR_THEME:
