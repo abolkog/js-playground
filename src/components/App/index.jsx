@@ -16,7 +16,7 @@ class App extends Component {
     const rightWidth = windowWith - initialWidth;
     this.state = {
       width: initialWidth,
-      rightWidth
+      rightWidth,
     };
     this.resizer = React.createRef();
   }
@@ -69,7 +69,7 @@ class App extends Component {
               flex: 1,
               flexDirection: 'column',
               height: '100%',
-              width: rightWidth
+              width: rightWidth,
             }}
           >
             <div style={{ minHeight: '50%', height: '50%' }}>

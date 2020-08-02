@@ -8,8 +8,8 @@ export const editorTab = [
     title: 'JS Code',
     iconName: 'fab fa-js-square',
     iconColor: '#FFE933',
-    component: CodeEditor
-  }
+    component: CodeEditor,
+  },
 ];
 
 export const outputTab = [
@@ -18,8 +18,8 @@ export const outputTab = [
     title: 'Result',
     iconName: 'fa fa-laptop-code',
     component: Output,
-    iconColor: '#89C0F4'
-  }
+    iconColor: '#89C0F4',
+  },
 ];
 
 export const consoleTab = [
@@ -28,6 +28,6 @@ export const consoleTab = [
     title: 'Console',
     iconName: 'fa fa-terminal',
     iconWrap: true,
-    component: Console
-  }
+    component: Console,
+  },
 ];

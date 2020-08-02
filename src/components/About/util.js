@@ -5,21 +5,21 @@ export default [
   {
     name: 'redux',
     url: 'https://redux.js.org/',
-    use: 'Redux'
+    use: 'Redux',
   },
   {
     name: 'moment.js',
     url: 'https://momentjs.com/',
-    use: 'moment'
+    use: 'moment',
   },
   {
     name: 'lodash',
     url: 'http://lodash.com',
-    use: '_'
+    use: '_',
   },
   {
     name: 'axios',
     url: 'https://github.com/axios/axios',
-    use: 'axios'
-  }
+    use: 'axios',
+  },
 ];

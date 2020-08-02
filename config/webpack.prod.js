@@ -6,8 +6,8 @@ module.exports = {
     globalObject: 'self',
     filename: '[name].[hash].js',
     path: commonPaths.outputPath,
-    chunkFilename: '[name].[chunkhash].js'
+    chunkFilename: '[name].[chunkhash].js',
   },
 
-  devtool: 'source-map'
+  devtool: 'source-map',
 };

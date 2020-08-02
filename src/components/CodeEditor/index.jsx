@@ -18,8 +18,8 @@ class CodeEditor extends Component {
       fontSize: 20,
       theme,
       minimap: {
-        enabled: false
-      }
+        enabled: false,
+      },
     };
 
     this.editor = monaco.editor.create(this.editorRef.current, editorConfig);
@@ -34,7 +34,7 @@ class CodeEditor extends Component {
       run: () => {
         const { code } = this.props;
         dispatch(codeActions.executeCode(code));
-      }
+      },
     });
 
     this.editorIsReady(this.editor);
@@ -72,18 +72,18 @@ class CodeEditor extends Component {
 CodeEditor.propTypes = {
   theme: PropTypes.string,
   code: PropTypes.string.isRequired,
-  sample: PropTypes.string.isRequired
+  sample: PropTypes.string.isRequired,
 };
 
 CodeEditor.defaultProps = {
-  theme: 'vs-dark'
+  theme: 'vs-dark',
 };
 
 const mapStateToProps = ({ code }) => {
   return {
     theme: code.theme,
     sample: code.sample,
-    code: code.code
+    code: code.code,
   };
 };
 export default connect(mapStateToProps)(CodeEditor);

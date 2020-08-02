@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   error: '',
   loading: false,
 
-  theme: 'vs-dark'
+  theme: 'vs-dark',
 };
 
 export default (state = INITIAL_STATE, action) => {

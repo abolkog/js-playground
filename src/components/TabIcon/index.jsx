@@ -16,12 +16,12 @@ const TabIcon = ({ iconWrap, iconName, iconColor }) => {
 TabIcon.propTypes = {
   iconWrap: PropTypes.bool,
   iconColor: PropTypes.string,
-  iconName: PropTypes.string.isRequired
+  iconName: PropTypes.string.isRequired,
 };
 
 TabIcon.defaultProps = {
   iconWrap: false,
-  iconColor: '#fff'
+  iconColor: '#fff',
 };
 
 export default TabIcon;

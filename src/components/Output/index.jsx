@@ -35,12 +35,12 @@ const Output = ({ error, result }) => {
 
 Output.propTypes = {
   error: PropTypes.string.isRequired,
-  result: PropTypes.arrayOf(PropTypes.any).isRequired
+  result: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 const mapStateToProps = ({ code }) => ({
   result: code.result.map(item => item),
-  error: code.error
+  error: code.error,
 });
 
 export default connect(mapStateToProps)(Output);

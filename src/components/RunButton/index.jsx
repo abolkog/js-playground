@@ -21,12 +21,12 @@ const RunButton = ({ loading, dispatch, code }) => (
 
 RunButton.propTypes = {
   loading: PropTypes.bool.isRequired,
-  code: PropTypes.string.isRequired
+  code: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ code }) => ({
   loading: code.loading,
-  code: code.code
+  code: code.code,
 });
 
 export default connect(mapStateToProps)(RunButton);

@@ -6,5 +6,5 @@ const toggleModal = () => ({ type: commonTypes.TOGGLE_MODAL });
 
 export const commonActions = {
   clearHistory,
-  toggleModal
+  toggleModal,
 };

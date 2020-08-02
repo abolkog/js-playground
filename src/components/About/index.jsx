@@ -32,7 +32,7 @@ const About = ({ display, dispatch }) => {
                         style={{
                           display: 'flex',
                           flex: 1,
-                          justifyContent: 'space-between'
+                          justifyContent: 'space-between',
                         }}
                       >
                         <a href={lib.url} target="_blank" rel="noopener noreferrer">
@@ -69,7 +69,7 @@ const About = ({ display, dispatch }) => {
 };
 
 About.propTypes = {
-  display: PropTypes.string.isRequired
+  display: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ common }) => ({ display: common.display });

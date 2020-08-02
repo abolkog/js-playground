@@ -15,13 +15,13 @@ module.exports = {
         loader: 'eslint-loader',
         exclude: /(node_modules)/,
         options: {
-          emitWarning: process.env.NODE_ENV !== 'production'
-        }
+          emitWarning: process.env.NODE_ENV !== 'production',
+        },
       },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules)/
+        exclude: /(node_modules)/,
       },
       {
         test: /\.css$/,
@@ -29,46 +29,46 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: commonPaths.publicPath
-            }
+              publicPath: commonPaths.publicPath,
+            },
           },
-          'css-loader'
-        ]
+          'css-loader',
+        ],
       },
       {
         test: /\.(woff|woff2|ttf|eot)$/,
-        loader: 'file-loader'
-      }
-    ]
+        loader: 'file-loader',
+      },
+    ],
   },
   serve: {
     content: commonPaths.entryPath,
     dev: {
-      publicPath: commonPaths.outputPath
+      publicPath: commonPaths.outputPath,
     },
-    open: true
+    open: true,
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css']
+    extensions: ['*', '.js', '.jsx', '.css'],
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
-      template: commonPaths.templatePath
+      template: commonPaths.templatePath,
     }),
     new MonacoWebpackPlugin({
-      languages: ['javascript', 'typescript']
+      languages: ['javascript', 'typescript'],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css'
+      chunkFilename: '[id].css',
     }),
     new webpack.DefinePlugin({
       'process.env.APP_VERSION': JSON.stringify(
         // eslint-disable-next-line global-require
         require('../package.json').version
-      )
-    })
-  ]
+      ),
+    }),
+  ],
 };

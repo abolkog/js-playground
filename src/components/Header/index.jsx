@@ -12,7 +12,7 @@ const Header = ({ dispatch, sampleName, activeTheme }) => {
   const handleChange = e => {
     e.preventDefault();
     const {
-      target: { value }
+      target: { value },
     } = e;
 
     const { code = '' } = CodeSamples.filter(item => item.name === value).reduce(item => item);
@@ -88,13 +88,13 @@ const Header = ({ dispatch, sampleName, activeTheme }) => {
 
 Header.propTypes = {
   activeTheme: PropTypes.string.isRequired,
-  sampleName: PropTypes.string.isRequired
+  sampleName: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ code }) => {
   return {
     activeTheme: code.theme,
-    sampleName: code.sampleName
+    sampleName: code.sampleName,
   };
 };
 export default connect(mapStateToProps)(Header);

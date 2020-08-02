@@ -7,13 +7,13 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: commonPaths.outputPath,
-    chunkFilename: '[name].js'
+    chunkFilename: '[name].js',
   },
   devServer: {
     contentBase: commonPaths.outputPath,
     compress: true,
     hot: true,
-    port: 3000
+    port: 3000,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 };

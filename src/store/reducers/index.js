@@ -4,5 +4,5 @@ import common from './common.reducer';
 
 export default combineReducers({
   code,
-  common
+  common,
 });

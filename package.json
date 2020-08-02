@@ -8,7 +8,9 @@
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "eslint --fix \"./**/*.{js,jsx}\"",
+    "format": "prettier --config ./.prettierrc --write \"./**/*.{js,jsx}\""
   },
   "repository": {
     "type": "git",
@@ -65,6 +67,8 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "mini-css-extract-plugin": "^0.9.0",
     "prettier": "^2.0.5",
     "style-loader": "^1.2.1",
@@ -72,5 +76,15 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.0.9"
+  },
+  "lint-staged": {
+    "**/*.(jsx|js)": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

@@ -26,11 +26,11 @@ const Console = ({ history }) => {
 };
 
 Console.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.any).isRequired
+  history: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 const mapStateToProps = ({ common }) => ({
-  history: common.history.map(item => item)
+  history: common.history.map(item => item),
 });
 
 export default connect(mapStateToProps)(Console);

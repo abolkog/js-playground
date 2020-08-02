@@ -5,7 +5,7 @@ const updateCode = code => ({ type: codeTypes.UPDATE_CODE, payload: code });
 
 const loadCodeSample = (sampleName, sample) => ({
   type: codeTypes.LOAD_CODE_SAMPLE,
-  payload: { sample, sampleName }
+  payload: { sample, sampleName },
 });
 
 const executeCode = code => async dispatch => {
@@ -24,5 +24,5 @@ export const codeActions = {
   updateCode,
   executeCode,
   updateEditorTheme,
-  loadCodeSample
+  loadCodeSample,
 };

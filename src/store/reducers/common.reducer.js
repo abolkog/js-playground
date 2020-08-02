@@ -3,7 +3,7 @@ import { commonTypes } from '../types';
 
 const INITIAL_STATE = {
   history: [],
-  display: 'none'
+  display: 'none',
 };
 
 export default (state = INITIAL_STATE, action) => {
