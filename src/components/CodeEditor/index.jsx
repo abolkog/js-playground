@@ -28,7 +28,7 @@ class CodeEditor extends Component {
     this.editor.addAction({
       id: 'run-code',
       label: 'Run The Code',
-      keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_R],
+      keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_K],
       contextMenuGroupId: 'navigation',
       contextMenuOrder: 1,
       run: () => {
