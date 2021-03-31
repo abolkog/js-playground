@@ -1,12 +1,12 @@
 export default [
   {
     id: 1,
-    label: 'Dark Theme',
     value: 'vs-dark',
+    icon: 'moon',
   },
   {
     id: 2,
-    label: 'Light Theme',
     value: 'vs-light',
+    icon: 'sun',
   },
 ];

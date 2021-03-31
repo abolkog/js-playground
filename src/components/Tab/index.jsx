@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import TabIcon from '../TabIcon';
 
-const Tab = ({ tabs }) => {
+const lightStyle = { background: '#fff', color: '#000' };
+
+const Tab = ({ tabs, activeTheme }) => {
+  const extraStyle = activeTheme === 'vs-light' ? lightStyle : {};
   return (
     <div style={{ height: '100%' }}>
       <ul className="nav nav-tabs">
@@ -18,7 +23,7 @@ const Tab = ({ tabs }) => {
           );
         })}
       </ul>
-      <div className="tab-pane fade show active" style={{ height: '94%' }}>
+      <div className="tab-pane fade show active" style={{ height: '94%', ...extraStyle }}>
         <div style={{ height: '100%' }}>
           {tabs.map(tab => {
             const { component: TabComponent, componentProps } = tab;
@@ -32,6 +37,13 @@ const Tab = ({ tabs }) => {
 
 Tab.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activeTheme: PropTypes.string.isRequired,
 };
 
-export default Tab;
+const mapStateToProps = ({ code }) => {
+  return {
+    activeTheme: code.theme,
+  };
+};
+
+export default connect(mapStateToProps)(Tab);

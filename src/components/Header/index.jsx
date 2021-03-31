@@ -72,7 +72,7 @@ const Header = ({ dispatch, sampleName, activeTheme }) => {
                 className={`btn btn-${activeTheme === item.value ? 'warning' : ' default'}`}
                 onClick={() => dispatch(codeActions.updateEditorTheme(item.value))}
               >
-                {item.label}
+                <i className={`fas fa-${item.icon}`} />
               </button>
             ))}
           </div>
