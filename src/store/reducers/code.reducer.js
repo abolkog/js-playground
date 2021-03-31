@@ -8,7 +8,6 @@ const INITIAL_STATE = {
   result: [],
   error: '',
   loading: false,
-
   theme: 'vs-dark',
 };
 

@@ -41,13 +41,6 @@ module.exports = {
       },
     ],
   },
-  serve: {
-    content: commonPaths.entryPath,
-    dev: {
-      publicPath: commonPaths.outputPath,
-    },
-    open: true,
-  },
   resolve: {
     modules: ['src', 'node_modules'],
     extensions: ['*', '.js', '.jsx', '.css'],
