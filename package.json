@@ -36,7 +36,7 @@
     "axios": "^0.19.2",
     "gh-pages": "^3.1.0",
     "github-fork-ribbon-css": "^0.2.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment-timezone": "^0.5.31",
     "monaco-editor": "^0.20.0",
     "monaco-editor-webpack-plugin": "^1.9.0",
