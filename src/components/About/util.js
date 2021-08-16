@@ -22,4 +22,9 @@ export default [
     url: 'https://github.com/axios/axios',
     use: 'axios',
   },
+  {
+    name: 'luxon',
+    url: 'https://moment.github.io/luxon/docs',
+    use: 'luxon',
+  },
 ];
