@@ -18,5 +18,10 @@
     "id": 4,
     "name": "lodash",
     "code": "// Lodash example. Reference lodash in the code as `_`\n\nconst  sample = _.chunk(['a', 'b', 'c', 'd'], 2);\nsample"
+  },
+  {
+    "id": 5,
+    "name": "luxon",
+    "code": "// Luxon code example. Reference Luxon in the code as `luxon` \n\nconst luxonDate = luxon.DateTime.now().setZone('America/New_York').minus({weeks:1}).endOf('day').toISO();\nluxonDate"
   }
 ]

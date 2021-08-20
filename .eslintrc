@@ -3,7 +3,8 @@
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "globals": {
     "document": true,
-    "window": true
+    "window": true,
+    "localStorage": true
   },
   "rules": {
     "no-eval": "off",

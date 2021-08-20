@@ -8,10 +8,11 @@ class CodeEditor extends Component {
   constructor(props) {
     super(props);
     this.editorRef = React.createRef();
+    this.runCode = this.runCode.bind(this);
   }
 
   componentDidMount() {
-    const { theme, dispatch } = this.props;
+    const { theme, code = '' } = this.props;
     const editorConfig = {
       value: null,
       language: 'javascript',
@@ -31,22 +32,24 @@ class CodeEditor extends Component {
       keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_K],
       contextMenuGroupId: 'navigation',
       contextMenuOrder: 1,
-      run: () => {
-        const { code } = this.props;
-        dispatch(codeActions.executeCode(code));
-      },
+      run: this.runCode,
     });
 
+    this.editor.setValue(code);
     this.editorIsReady(this.editor);
   }
 
   componentDidUpdate(prevProps) {
-    const { theme, sample } = this.props;
+    const { theme, sample, code } = this.props;
     if (prevProps.theme !== theme) {
       monaco.editor.setTheme(theme);
     }
     if (prevProps.sample !== sample) {
       this.editor.setValue(sample);
+    }
+
+    if (prevProps.code && !code) {
+      this.editor.setValue('');
     }
   }
 
@@ -62,6 +65,11 @@ class CodeEditor extends Component {
       const code = editor.getValue();
       dispatch(codeActions.updateCode(code));
     });
+  }
+
+  runCode() {
+    const { code, dispatch } = this.props;
+    dispatch(codeActions.executeCode(code));
   }
 
   render() {

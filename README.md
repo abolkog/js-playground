@@ -12,6 +12,7 @@ A simple JavaScript playground / code sandbox hooked up with few libraries for q
 - [Moment](https://momentjs.com/)
 - [Lodash](https://lodash.com/)
 - [Axios](https://github.com/axios/axios)
+- [Luxon](https://moment.github.io/luxon/#/)
 
 ## Demo
 

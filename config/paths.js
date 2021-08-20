@@ -5,4 +5,5 @@ module.exports = {
   outputPath: path.resolve(__dirname, '../', 'build'),
   entryPath: path.resolve(__dirname, '../', 'src/index.jsx'),
   templatePath: path.resolve(__dirname, '../', 'public/index.html'),
+  favIconPath: path.resolve(__dirname, '../', 'public/favicon.ico'),
 };

@@ -36,7 +36,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|eot)$/,
+        test: /\.(woff|woff2|ttf|eot|ico)$/,
         loader: 'file-loader',
       },
     ],
@@ -49,6 +49,7 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: commonPaths.templatePath,
+      favicon: commonPaths.favIconPath,
     }),
     new MonacoWebpackPlugin({
       languages: ['javascript', 'typescript'],

@@ -1,7 +1,11 @@
 import { codeTypes } from '../types';
 import runCodeInVM from '../../helpers';
+import { setLocalStorage, STORAGE } from '../../helpers/storage';
 
-const updateCode = code => ({ type: codeTypes.UPDATE_CODE, payload: code });
+const updateCode = code => {
+  setLocalStorage(STORAGE.CODE, code);
+  return { type: codeTypes.UPDATE_CODE, payload: code };
+};
 
 const loadCodeSample = (sampleName, sample) => ({
   type: codeTypes.LOAD_CODE_SAMPLE,
