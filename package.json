@@ -1,7 +1,7 @@
 {
   "name": "js-playground",
   "description": "JavaScript Playground hooked up with Redux",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
