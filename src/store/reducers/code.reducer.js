@@ -31,6 +31,8 @@ export default (state = INITIAL_STATE, action) => {
     case codeTypes.CODE_RUN_ERROR:
       return { ...state, error: action.payload, result: [], loading: false };
     case commonTypes.CLEAR_HISTORY:
+      return { ...state, sample: '', sampleName: '', result: [] };
+    case commonTypes.CLEAR_ALL:
       return { ...state, code: '', sample: '', sampleName: '', result: [] };
     case codeTypes.UPDATE_EDITOR_THEME:
       return { ...state, theme: action.payload };

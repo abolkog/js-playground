@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import { connect } from 'react-redux';
 import { codeActions } from '../../store/actions';
+import { commonTypes } from '../../store/types';
 
 class CodeEditor extends Component {
   constructor(props) {
@@ -33,6 +34,17 @@ class CodeEditor extends Component {
       contextMenuGroupId: 'navigation',
       contextMenuOrder: 1,
       run: this.runCode,
+    });
+    this.editor.addAction({
+      id: 'clear-code',
+      label: 'Clear The Code',
+      keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_L],
+      contextMenuGroupId: 'navigation',
+      contextMenuOrder: 1,
+      run: () => {
+        const { dispatch } = this.props;
+        dispatch({ type: commonTypes.CLEAR_HISTORY });
+      },
     });
 
     this.editor.setValue(code);

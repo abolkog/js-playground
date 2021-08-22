@@ -2,4 +2,5 @@ export const commonTypes = {
   TOGGLE_MODAL: 'TOGGLE_MODAL',
   CONSOLE_LOG: 'CONSOLE_LOG',
   CLEAR_HISTORY: 'CLEAR_HISTORY',
+  CLEAR_ALL: 'CLEAR_ALL',
 };

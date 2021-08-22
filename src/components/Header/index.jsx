@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { commonActions, codeActions } from '../../store/actions';
 import RunButton from '../RunButton';
+import ResetButton from '../ResetButton';
 import ClearButton from '../ClearButton';
 import THEMES from './util';
 import CodeSamples from './code-sample.json';
@@ -76,6 +77,8 @@ const Header = ({ dispatch, sampleName, activeTheme }) => {
               </button>
             ))}
           </div>
+          <span style={{ marginLeft: 20, marginRight: 20 }} />
+          <ResetButton />
           <span style={{ marginLeft: 20, marginRight: 20 }} />
           <ClearButton />
           <span style={{ marginLeft: 20, marginRight: 20 }} />
