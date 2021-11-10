@@ -27,4 +27,9 @@ export default [
     url: 'https://moment.github.io/luxon/docs',
     use: 'luxon',
   },
+  {
+    name: 'faker.js',
+    url: 'https://github.com/marak/Faker.js/',
+    use: 'faker',
+  },
 ];
