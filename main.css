@@ -4043,6 +4043,16 @@
 	margin-left: 1px;
 }
 
+.clickable {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: 0;
+  cursor: pointer;
+}
+
 html,
 body {
   height: 100%;
@@ -4103,6 +4113,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.menu {
+  position: fixed;
+  list-style: none;
+  user-select: none;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-width: 200px;
+  z-index: 100;
+}
+
+.menu li {
+  cursor: pointer;
+  padding: 0px 5px;
+}
+.menu li:hover {
+  background-color: #3a3f44;
 }
 
 
