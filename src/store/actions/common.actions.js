@@ -9,7 +9,10 @@ const clearHistory = (withCode = false) => {
 
 const toggleModal = () => ({ type: commonTypes.TOGGLE_MODAL });
 
+const toggleJsonView = () => ({ type: commonTypes.TOGGLE_JSON_VIEW });
+
 export const commonActions = {
   clearHistory,
   toggleModal,
+  toggleJsonView,
 };

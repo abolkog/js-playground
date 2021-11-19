@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 const Output = ({ error, result }) => {
   const createKey = index => {
@@ -21,14 +22,17 @@ const Output = ({ error, result }) => {
 
   return (
     <div style={{ width: '100%', height: '90%' }} className="console">
-      {result.map((item, index) => (
-        <div key={createKey(index)}>
-          <pre>
-            <span style={{ marginRight: 5 }}>&#x2023;</span>
-            <span>{item}</span>
-          </pre>
-        </div>
-      ))}
+      {result.map((item, index) => {
+        const resut = !_.isString(item) ? JSON.stringify(item) : item;
+        return (
+          <div key={createKey(index)}>
+            <pre>
+              <span style={{ marginRight: 5 }}>&#x2023;</span>
+              <span>{resut}</span>
+            </pre>
+          </div>
+        );
+      })}
     </div>
   );
 };

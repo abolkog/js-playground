@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { getLocalStorage, STORAGE } from '../../helpers/storage';
 import { codeTypes, commonTypes } from '../types';
 
@@ -20,13 +19,7 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, code: action.payload, loading: false };
     case codeTypes.CODE_RUN_SUCCESS:
       const { result } = state;
-      if (action.payload) {
-        if (!_.isString(action.payload)) {
-          result.push(JSON.stringify(action.payload));
-        } else {
-          result.push(action.payload);
-        }
-      }
+      result.push(action.payload);
       return { ...state, result, error: '', loading: false };
     case codeTypes.CODE_RUN_ERROR:
       return { ...state, error: action.payload, result: [], loading: false };

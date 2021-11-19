@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+
 import Header from '../Header';
 import Tab from '../Tab';
 import About from '../About';
+import JsonView from '../JsonView';
 
 import { editorTab, consoleTab, outputTab } from './tabs';
+import ContextMenu from '../ContextMenu';
 
 const MIN_WIDTH = 100;
 const MAX_WIDTH = 1400;
@@ -17,8 +20,10 @@ class App extends Component {
     this.state = {
       width: initialWidth,
       rightWidth,
+      position: null,
     };
     this.resizer = React.createRef();
+    this.handleContextMenu = this.handleContextMenu.bind(this);
   }
 
   componentDidMount() {
@@ -50,8 +55,15 @@ class App extends Component {
     window.removeEventListener('mouseup', this.stopResize, false);
   };
 
+  handleContextMenu = event => {
+    event.preventDefault();
+    const { pageX, pageY } = event;
+    const position = { top: pageY, left: pageX };
+    this.setState({ position });
+  };
+
   render() {
-    const { width, rightWidth } = this.state;
+    const { width, rightWidth, position } = this.state;
 
     return (
       <div className="mainContainer">
@@ -75,13 +87,15 @@ class App extends Component {
             <div style={{ minHeight: '50%', height: '50%' }}>
               <Tab tabs={outputTab} />
             </div>
-            <div style={{ minHeight: '50%', height: '50%' }}>
+            <div onContextMenu={this.handleContextMenu} style={{ minHeight: '50%', height: '50%' }}>
               <Tab tabs={consoleTab} />
             </div>
           </div>
         </div>
 
         <About />
+        <JsonView />
+        <ContextMenu position={position} onClose={() => this.setState({ position: null })} />
       </div>
     );
   }
