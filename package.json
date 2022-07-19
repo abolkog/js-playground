@@ -1,7 +1,7 @@
 {
   "name": "js-playground",
   "description": "JavaScript Playground hooked up with Redux",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -39,7 +39,6 @@
     "github-fork-ribbon-css": "^0.2.3",
     "lodash": "^4.17.19",
     "luxon": "^1.27.0",
-    "moment-timezone": "^0.5.31",
     "monaco-editor": "^0.23.0",
     "monaco-editor-webpack-plugin": "^3.0.1",
     "react": "^17.0.2",

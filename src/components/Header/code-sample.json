@@ -6,21 +6,16 @@
   },
   {
     "id": 2,
-    "name": "Moment",
-    "code": "// Moment example. Reference moment in the code as `moment`\n\n// Moment\nconst now = moment().format('MMMM Do YYYY, h:mm:ss a');\n\n// Moment Time Zone\nconst nowInSudan = moment().tz('Africa/Khartoum').format('MMMM Do YYYY, h:mm:ss a');\n\n// Print it to the console\nconsole.log(now);\n\n// Print it to the output\nnowInSudan;"
-  },
-  {
-    "id": 3,
     "name": "Axios",
     "code": "// axios example. Reference axios in the code as `axios`\n\nconst loadTVShowCast = async () => {\n\tconst tvShowId = 431; // FRIENDS TV Show\n\tconst url = `https://api.tvmaze.com/shows/${tvShowId}/cast`;\n\tconst { data } = await axios.get(url);\n\tconsole.log(data);\n}\n\nloadTVShowCast();"
   },
   {
-    "id": 4,
+    "id": 3,
     "name": "lodash",
     "code": "// Lodash example. Reference lodash in the code as `_`\n\nconst  sample = _.chunk(['a', 'b', 'c', 'd'], 2);\nsample"
   },
   {
-    "id": 5,
+    "id": 4,
     "name": "luxon",
     "code": "// Luxon code example. Reference Luxon in the code as `luxon` \n\nconst luxonDate = luxon.DateTime.now().setZone('America/New_York').minus({weeks:1}).endOf('day').toISO();\nluxonDate"
   }

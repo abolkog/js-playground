@@ -8,11 +8,6 @@ export default [
     use: 'Redux',
   },
   {
-    name: 'moment.js',
-    url: 'https://momentjs.com/',
-    use: 'moment',
-  },
-  {
     name: 'lodash',
     url: 'http://lodash.com',
     use: '_',
