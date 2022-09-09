@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const commonPaths = require('./paths');
 
@@ -9,19 +10,24 @@ module.exports = {
   entry: commonPaths.entryPath,
   module: {
     rules: [
+      // {
+      //   enforce: 'pre',
+      //   test: /\.(js|jsx)$/,
+      //   loader: 'eslint-loader',
+      //   exclude: /(node_modules)/,
+      //   options: {
+      //     emitWarning: process.env.NODE_ENV !== 'production',
+      //   },
+      // },
       {
-        enforce: 'pre',
-        test: /\.(js|jsx)$/,
-        loader: 'eslint-loader',
-        exclude: /(node_modules)/,
-        options: {
-          emitWarning: process.env.NODE_ENV !== 'production',
+        test: /\.tsx?$/,
+        exclude: /(node_modules|\.webpack)/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+          },
         },
-      },
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules)/,
       },
       {
         test: /\.css$/,
@@ -43,10 +49,11 @@ module.exports = {
   },
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.css'],
+    extensions: ['.ts', '.tsx', '.js', '.css'],
   },
   plugins: [
     new webpack.ProgressPlugin(),
+    new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: commonPaths.templatePath,
       favicon: commonPaths.favIconPath,
@@ -57,12 +64,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
-    }),
-    new webpack.DefinePlugin({
-      'process.env.APP_VERSION': JSON.stringify(
-        // eslint-disable-next-line global-require
-        require('../package.json').version
-      ),
     }),
   ],
 };

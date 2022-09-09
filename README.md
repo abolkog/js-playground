@@ -1,6 +1,7 @@
 ## js-playground (JavaScript Playground)
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/abolkog/js-playground)
+![](https://img.shields.io/github/license/abolkog/js-playground.svg)
 
 A simple JavaScript playground / code sandbox hooked up with few libraries for quick code testing
 
@@ -9,7 +10,6 @@ A simple JavaScript playground / code sandbox hooked up with few libraries for q
 ## Available Libraries
 
 - [Redux](https://redux.js.org/)
-- [Moment](https://momentjs.com/)
 - [Lodash](https://lodash.com/)
 - [Axios](https://github.com/axios/axios)
 - [Luxon](https://moment.github.io/luxon/#/)
@@ -22,13 +22,40 @@ You can see demo at [This link](https://abolkog.github.io/js-playground/index.ht
 
 1- Clone the Repo
 
-2- Install the dependencies
+2- If you are using `nvm`, setup node version using the `.nvmrc` file
 
+```shell
+nvm use
 ```
+
+3- Install the dependencies
+
+```shell
 npm install
+```
+
+4- Start the dev server
+
+```shell
 npm start
 ```
 
-2- Visit [http://localhost:3000](http://localhost:3000) on your browser.
+5- Visit [http://localhost:3000](http://localhost:3000) on your browser.
 
-3- Start writing JS code !
+6- Start writing JS code !
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## Authors
+
+- **Khalid Elshafie** - _Initial work_ - [abolkog](https://github.com/abolkog)
+
+See also the list of [contributors](https://github.com/abolkog/js-playground/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

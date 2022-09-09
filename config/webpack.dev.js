@@ -9,13 +9,11 @@ module.exports = {
     path: commonPaths.outputPath,
     chunkFilename: '[name].js',
   },
+  devtool: 'source-map',
   devServer: {
-    contentBase: commonPaths.outputPath,
     compress: true,
     hot: true,
     port: 3000,
-    disableHostCheck: true,
   },
-  target: 'web',
   plugins: [new webpack.HotModuleReplacementPlugin()],
 };
