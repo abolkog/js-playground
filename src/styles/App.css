@@ -77,6 +77,19 @@ body {
   cursor: pointer;
   padding: 0px 5px;
 }
+
 .menu li:hover {
   background-color: #3a3f44;
+}
+
+.clickable {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 5px;
+  font: inherit;
+  outline: 0;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
 }
