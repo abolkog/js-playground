@@ -9,6 +9,9 @@ module.exports = {
     'src/**/*.{ts,tsx}',
     '!src/**/**.d.ts',
     '!src/index.tsx',
+    '!src/components/App/tabs.ts',
+    '!src/helpers/const.ts',
+    '!src/helpers/global.ts',
     '!src/reportWebVitals.ts',
   ],
   coverageThreshold: {

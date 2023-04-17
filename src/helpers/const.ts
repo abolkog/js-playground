@@ -2,23 +2,33 @@
 export const LIBRARIES: Library[] = [
   {
     name: 'redux',
+    version: '4.2.0',
     url: 'https://redux.js.org/',
     use: 'Redux',
   },
   {
     name: 'lodash',
+    version: '4.17.21',
     url: 'http://lodash.com',
     use: '_',
   },
   {
     name: 'axios',
+    version: '0.21.4',
     url: 'https://github.com/axios/axios',
     use: 'axios',
   },
   {
     name: 'luxon',
+    version: '1.28.0',
     url: 'https://moment.github.io/luxon/docs',
     use: 'luxon',
+  },
+  {
+    name: 'date-fns',
+    version: '2.29.3',
+    url: 'https://date-fns.org/',
+    use: 'dfn',
   },
 ];
 
@@ -46,6 +56,12 @@ export const CODE_SAMPLES: CodeSample[] = [
     name: 'luxon',
     codeSample:
       "// Luxon code example. Reference Luxon in the code as `luxon` \n\nconst luxonDate = luxon.DateTime.now().setZone('America/New_York').minus({weeks:1}).endOf('day').toISO();\nluxonDate",
+  },
+  {
+    id: 5,
+    name: 'date-fns',
+    codeSample:
+      '// date-fns code example. Reference date-fns in the code as `dfn` \n\nconst value = dfn.formatDistance(dfn.subDays(new Date(), 3), new Date(), { addSuffix: true });\nvalue;',
   },
 ];
 

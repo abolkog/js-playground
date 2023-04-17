@@ -93,3 +93,9 @@ body {
   width: 100%;
   text-align: left;
 }
+
+
+.text-sm {
+  color: #aaa;
+  font-size: 0.7rem;
+}

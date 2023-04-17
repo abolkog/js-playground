@@ -40,7 +40,8 @@ const About: React.FC = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          {lib.name}
+                          {lib.name}{' '}
+                          <span className="text-sm">v{lib.version}</span>
                         </a>
                         <span>Use as {lib.use}</span>
                       </div>

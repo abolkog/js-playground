@@ -14,4 +14,5 @@ interface Library {
   name: string;
   url: string;
   use: string;
+  version: string;
 }
