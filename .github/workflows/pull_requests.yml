@@ -16,6 +16,8 @@ jobs:
         run: npm ci
       - name: Code Lint
         run: npm run lint
+      - name: Test app build
+        run: npm run build --if-present
       - name: Commit Lint
         uses: wagoid/commitlint-github-action@v5
         with:

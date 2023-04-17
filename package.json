@@ -59,6 +59,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
