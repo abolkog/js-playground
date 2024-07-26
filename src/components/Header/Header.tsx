@@ -10,13 +10,6 @@ const Header: React.FC = () => {
   const { runCode } = useCodeRunner();
   const { theme, codeSampleName } = state;
 
-  const handleReset = () => {
-    // eslint-disable-next-line no-restricted-globals
-    const answer = confirm('This will clear history and code. Are you sure?');
-    if (answer) {
-      dispatch({ type: AppAactions.RESET_ALL });
-    }
-  };
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const {
       target: { value },
@@ -78,6 +71,7 @@ const Header: React.FC = () => {
 
           <div className="btn-group" role="group">
             {EDITOR_THEMES.map(item => (
+              // eslint-disable-next-line jsx-a11y/control-has-associated-label
               <button
                 key={item.id}
                 type="button"
@@ -96,8 +90,6 @@ const Header: React.FC = () => {
               </button>
             ))}
           </div>
-          <span style={{ marginLeft: 20, marginRight: 20 }} />
-          <ActionButton type="reset" onClick={handleReset} />
 
           <span style={{ marginLeft: 20, marginRight: 20 }} />
           <ActionButton

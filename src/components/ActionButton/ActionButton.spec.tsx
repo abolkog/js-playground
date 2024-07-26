@@ -5,22 +5,13 @@ const buttonTestId = 'actionbutton-button';
 const iconTestId = 'actionbutton-icon';
 describe('<ActionButton />', () => {
   const onClick = jest.fn();
-  it('render reset button when button type is reset', () => {
-    render(<ActionButton onClick={onClick} type="reset" />);
-    const button = screen.getByTestId(`${buttonTestId}-reset`);
-    const icon = screen.getByTestId(iconTestId);
-
-    expect(button.textContent?.trim()).toEqual('Reset');
-    expect(button).toHaveClass('btn-danger');
-    expect(icon).toHaveClass('fa-redo');
-  });
 
   it('render clear button when button type is clear', () => {
     render(<ActionButton onClick={onClick} type="clear" />);
     const button = screen.getByTestId(`${buttonTestId}-clear`);
     const icon = screen.getByTestId(iconTestId);
 
-    expect(button.textContent?.trim()).toEqual('Clear');
+    expect(button.textContent?.trim()).toEqual('Clear result');
     expect(button).toHaveClass('btn-info');
     expect(icon).toHaveClass('fa-trash');
   });

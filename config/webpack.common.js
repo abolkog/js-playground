@@ -46,6 +46,7 @@ module.exports = {
         loader: 'file-loader',
       },
     ],
+    noParse: [require.resolve('typescript/lib/typescript.js')],
   },
   resolve: {
     modules: ['src', 'node_modules'],

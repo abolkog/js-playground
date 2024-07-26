@@ -4,7 +4,8 @@ import { AppContext } from 'context/AppContext';
 
 const Console: React.FC = () => {
   const { state } = useContext(AppContext);
-  const { result, error } = state;
+  const { result, error, theme } = state;
+  const extraClass = theme === 'vs-light' ? 'console-light' : '';
 
   const createKey = (index: number) => {
     return `key${index}`;
@@ -12,7 +13,7 @@ const Console: React.FC = () => {
 
   if (error) {
     return (
-      <div style={{ width: '100%', height: '90%' }} className="console">
+      <div className="console">
         <div data-testid="console-error" className="error">
           {error}
         </div>
@@ -21,7 +22,7 @@ const Console: React.FC = () => {
   }
 
   return (
-    <div data-testid="console-result" className="console">
+    <div data-testid="console-result" className={`console ${extraClass}`}>
       {result.map((item, index) => {
         const resut = !_.isString(item) ? JSON.stringify(item) : item;
         return (

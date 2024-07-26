@@ -1,12 +1,6 @@
 const ButtonProps: Record<ActionButtonType, ActionButtonTypeProps> = {
-  reset: {
-    title: 'Reset',
-    className: 'btn btn-danger',
-    icon: 'fas fa-redo',
-    toolTip: 'Clear code in editor and result',
-  },
   clear: {
-    title: 'Clear',
+    title: 'Clear result',
     icon: 'fas fa-trash',
     className: 'btn btn-info',
     toolTip: 'Clear result (CtrCmd + l)',

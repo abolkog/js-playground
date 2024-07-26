@@ -10,7 +10,6 @@ export const AppAactions = {
   TOGGLE_JSON_VIEW: 'TOGGLE_JSON_VIEW',
   TOGGLE_THEME: 'TOGGLE_THEME',
   CLEAR_RESULT: 'CLEAR_RESULT',
-  RESET_ALL: 'RESET_ALL',
   LOAD_CODE_SAMPLE: 'LOAD_CODE_SAMPLE',
 };
 
@@ -56,15 +55,6 @@ export const reducer = (state: AppState, action: Action): AppState => {
       return handleLoadCodeSample(state, action);
     case AppAactions.CLEAR_RESULT:
       return { ...state, result: [] };
-    case AppAactions.RESET_ALL:
-      return {
-        ...state,
-        codeSample: '',
-        codeSampleName: '',
-        result: [],
-        error: '',
-        loading: false,
-      };
     default:
       return state;
   }

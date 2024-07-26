@@ -50,14 +50,6 @@ describe('<Header />', () => {
       });
     });
 
-    it('dispatch reset action when reset button is clicked', () => {
-      jest.spyOn(global, 'confirm' as any).mockReturnValueOnce(true);
-      fireEvent.click(screen.getByTestId('actionbutton-button-reset'));
-      expect(dispatch).toHaveBeenCalledWith({
-        type: AppAactions.RESET_ALL,
-      });
-    });
-
     it('dispatch load code sample on sample change', () => {
       fireEvent.change(screen.getByTestId('header-code-selector'), {
         target: { value: 'Axios' },

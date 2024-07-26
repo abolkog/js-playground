@@ -63,6 +63,43 @@ export const CODE_SAMPLES: CodeSample[] = [
     codeSample:
       '// date-fns code example. Reference date-fns in the code as `dfn` \n\nconst value = dfn.formatDistance(dfn.subDays(new Date(), 3), new Date(), { addSuffix: true });\nvalue;',
   },
+  {
+    id: 6,
+    name: 'Typescript',
+    codeSample: `// Interface for calculation parameters
+interface CalculationParams {
+    operation: string;
+    operand1: number;
+    operand2: number;
+}
+
+// Function to calculate values based on operation
+function calculate(params: CalculationParams): number | string {
+    const { operation, operand1, operand2 } = params;
+    switch (operation) {
+        case '+':
+            return operand1 + operand2;
+        case '-':
+            return operand1 - operand2;
+        case '*':
+            return operand1 * operand2;
+        case '/':
+            if (operand2 === 0) {
+                return 'Cannot divide by zero';
+            } else {
+                return operand1 / operand2;
+            }
+        default:
+            return 'Invalid operation';
+    }
+}
+
+// Example usage:
+console.log(calculate({ operation: '+', operand1: 5, operand2: 3 }));   // Output: 8
+console.log(calculate({ operation: '-', operand1: 7, operand2: 2 }));   // Output: 5
+console.log(calculate({ operation: '*', operand1: 4, operand2: 6 }));   // Output: 24
+`,
+  },
 ];
 
 export const EDITOR_THEMES: EditorTheme[] = [
