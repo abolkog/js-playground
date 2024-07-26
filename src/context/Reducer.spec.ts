@@ -83,17 +83,6 @@ describe('Reducer tests', () => {
     expect(state.codeSampleName).toEqual(payload.codeSampleName);
   });
 
-  it('reset values when reset all action is dispatched', () => {
-    const state = reducer(INITIAL_STATE, {
-      type: AppAactions.RESET_ALL,
-    });
-    expect(state.loading).toEqual(false);
-    expect(state.result.length).toEqual(0);
-    expect(state.error).toEqual('');
-    expect(state.codeSample).toEqual('');
-    expect(state.codeSampleName).toEqual('');
-  });
-
   it('return state if action cannot be handled', () => {
     const state = reducer(INITIAL_STATE, {
       type: 'Unhandled',

@@ -27,6 +27,7 @@ jobs:
         id: coverage
         with:
           output: report-markdown
+          test-script: npm test -- --ci --json --coverage --testLocationInResults --outputFile=report.json
       - name: Publish Coverage
         uses: marocchino/sticky-pull-request-comment@v2
         with:
