@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/abolkog/js-playground/issues"
   },
-  "homepage": "https://github.com/abolkog/js-playground",
+  "homepage": "https://abolkog.github.io/js-playground",
   "browserslist": {
     "production": [
       ">0.2%",
