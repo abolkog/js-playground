@@ -8,8 +8,6 @@ import JsonView from 'components/JsonView';
 import CodeEditor from 'components/CodeEditor';
 import Console from 'components/Console';
 
-const width = 1400;
-
 const App: React.FC = () => {
   const { dispatch } = useContext(AppContext);
   const [position, setPosition] = useState<MenuPosition | null>(null);
@@ -29,18 +27,16 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="mainContainer">
+    <div className="flex flexColumn">
       <Header />
 
-      <div className="appConainer">
-        <div style={{ width }}>
+      <div className="flex flexColumn">
+        <div className="editorContainer">
           <CodeEditor />
         </div>
 
-        <div style={{ width: window.innerWidth - width - 20 }}>
-          <div style={{ height: '100%' }} onContextMenu={handleContextMenu}>
-            <Console />
-          </div>
+        <div className=" consoleContainer" onContextMenu={handleContextMenu}>
+          <Console />
         </div>
       </div>
 
