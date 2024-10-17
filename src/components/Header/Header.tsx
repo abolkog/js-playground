@@ -26,13 +26,13 @@ const Header: React.FC = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-2">
       <a className="navbar-brand" href="/">
         JS PlayGround
       </a>
 
-      <div className="collapse navbar-collapse" id="navbarColor01">
-        <ul className="navbar-nav mr-auto">
+      <div className="collapse navbar-collapse">
+        <ul className="navbar-nav me-auto">
           <li className="nav-item">
             <button
               type="button"
@@ -49,6 +49,7 @@ const Header: React.FC = () => {
             </button>
           </li>
         </ul>
+
         <div className="my-2 app-actions">
           <div>
             <select
@@ -95,6 +96,12 @@ const Header: React.FC = () => {
           <ActionButton
             type="clear"
             onClick={() => dispatch({ type: AppAactions.CLEAR_RESULT })}
+          />
+
+          <span style={{ marginLeft: 20, marginRight: 20 }} />
+          <ActionButton
+            type="history"
+            onClick={() => dispatch({ type: AppAactions.TOGGLE_HISTORY_MODAL })}
           />
 
           <span style={{ marginLeft: 20, marginRight: 20 }} />

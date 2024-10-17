@@ -12,6 +12,7 @@ describe('Reducer tests', () => {
     display: 'none',
     position: null,
     jsonView: '',
+    historyModalShown: false,
   };
 
   it('update and persist code when update code action is dispatched', () => {
