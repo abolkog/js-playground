@@ -1,7 +1,7 @@
 {
   "name": "js-playground",
   "description": "JavaScript Playground hooked up with Redux",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "private": true,
   "scripts": {
     "predeploy": "npm run build",
