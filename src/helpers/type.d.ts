@@ -16,3 +16,8 @@ interface Library {
   use: string;
   version: string;
 }
+
+interface HisotryItem {
+  code: string;
+  date: string;
+}

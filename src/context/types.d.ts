@@ -12,6 +12,7 @@ interface AppState {
   display: DisplayType;
   position: null;
   jsonView: string;
+  historyModalShown: boolean;
 }
 
 interface Action {

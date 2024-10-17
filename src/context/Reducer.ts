@@ -1,4 +1,4 @@
-import { setLocalStorage, STORAGE } from 'services/storage';
+import { saveToHistory, setLocalStorage, STORAGE } from 'services/storage';
 
 export const AppAactions = {
   UPDATE_CODE: 'UPDATE_CODE',
@@ -11,6 +11,7 @@ export const AppAactions = {
   TOGGLE_THEME: 'TOGGLE_THEME',
   CLEAR_RESULT: 'CLEAR_RESULT',
   LOAD_CODE_SAMPLE: 'LOAD_CODE_SAMPLE',
+  TOGGLE_HISTORY_MODAL: 'TOGGLE_HISTORY_MODAL',
 };
 
 const handleCodeUpdate = (state: AppState, action: Action): AppState => {
@@ -35,12 +36,22 @@ const handleLoadCodeSample = (state: AppState, action: Action): AppState => {
   return { ...state, codeSample, codeSampleName };
 };
 
+const handleCodeRunning = (state: AppState): AppState => {
+  saveToHistory(state.code);
+  return { ...state, loading: true };
+};
+
+const setAppTheme = (state: AppState, action: Action) => {
+  setLocalStorage(STORAGE.THEME, action.payload as string);
+  return { ...state, theme: action.payload as Theme };
+};
+
 export const reducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
     case AppAactions.UPDATE_CODE:
       return handleCodeUpdate(state, action);
     case AppAactions.CODE_RUNNING:
-      return { ...state, loading: true };
+      return handleCodeRunning(state);
     case AppAactions.CODE_RUN_SUCCESS:
       return handleCodeSuccess(state, action);
     case AppAactions.CODE_RUN_ERROR:
@@ -50,11 +61,13 @@ export const reducer = (state: AppState, action: Action): AppState => {
     case AppAactions.TOGGLE_JSON_VIEW:
       return { ...state, jsonView: action.payload as DisplayType };
     case AppAactions.TOGGLE_THEME:
-      return { ...state, theme: action.payload as Theme };
+      return setAppTheme(state, action);
     case AppAactions.LOAD_CODE_SAMPLE:
       return handleLoadCodeSample(state, action);
     case AppAactions.CLEAR_RESULT:
       return { ...state, result: [] };
+    case AppAactions.TOGGLE_HISTORY_MODAL:
+      return { ...state, historyModalShown: !state.historyModalShown };
     default:
       return state;
   }

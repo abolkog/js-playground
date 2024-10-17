@@ -2,6 +2,12 @@ import { createContext, useMemo, useReducer } from 'react';
 import { getLocalStorage, STORAGE } from 'services/storage';
 import { reducer } from 'context/Reducer';
 
+const getTheme = (): Theme => {
+  const themeFromStorage = getLocalStorage(STORAGE.THEME) as Theme;
+  if (themeFromStorage === 'vs-dark' || themeFromStorage === 'vs-light')
+    return themeFromStorage;
+  return 'vs-dark';
+};
 const initialState: AppState = {
   code: getLocalStorage(STORAGE.CODE),
   codeSample: '',
@@ -9,10 +15,11 @@ const initialState: AppState = {
   result: [],
   error: '',
   loading: false,
-  theme: 'vs-dark',
+  theme: getTheme(),
   display: 'none',
   position: null,
   jsonView: 'none',
+  historyModalShown: false,
 };
 
 export const AppContext = createContext<{

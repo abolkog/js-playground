@@ -11,6 +11,12 @@ const ButtonProps: Record<ActionButtonType, ActionButtonTypeProps> = {
     className: 'btn btn-success',
     toolTip: 'Run Code (CtrCmd + k)',
   },
+  history: {
+    title: 'History',
+    icon: 'fas fa-history',
+    className: 'btn btn-warning',
+    toolTip: 'Show run history',
+  },
 };
 
 const ActionButton: React.FC<ActionButtonProps> = ({

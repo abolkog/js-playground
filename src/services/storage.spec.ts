@@ -7,6 +7,7 @@ describe('Storage tests', () => {
     StorageService.setLocalStorage('mock', 'value');
     expect(setItemSpy).toHaveBeenCalledWith('mock', 'value');
   });
+
   it('Get value from locale storage', () => {
     const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
     StorageService.getLocalStorage('value');

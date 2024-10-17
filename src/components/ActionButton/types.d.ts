@@ -1,4 +1,4 @@
-type ActionButtonType = 'execute' | 'clear';
+type ActionButtonType = 'execute' | 'clear' | 'history';
 
 interface ActionButtonProps {
   type: ActionButtonType;

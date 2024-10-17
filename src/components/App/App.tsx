@@ -7,6 +7,7 @@ import ContextMenu from 'components/ContextMenu';
 import JsonView from 'components/JsonView';
 import CodeEditor from 'components/CodeEditor';
 import Console from 'components/Console';
+import HistoryModal from 'components/HistoryModal';
 
 const App: React.FC = () => {
   const { dispatch } = useContext(AppContext);
@@ -52,6 +53,8 @@ const App: React.FC = () => {
           setPosition(null);
         }}
       />
+
+      <HistoryModal />
     </div>
   );
 };

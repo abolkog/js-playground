@@ -1,23 +1,27 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import JsonView from 'components/JsonView';
 import { AppContext } from 'context/AppContext';
 import { AppAactions } from 'context/Reducer';
 
 describe('<JsonView />', () => {
-  it('calls dipatch on button click', () => {
-    const state = {
-      display: 'block',
-      result: [''],
-    } as AppState;
-    const dispatch = jest.fn();
+  const state = {
+    display: 'block',
+    result: [''],
+  } as AppState;
+  const dispatch = jest.fn();
 
+  beforeEach(() => {
     render(
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
       <AppContext.Provider value={{ state, dispatch }}>
         <JsonView />
       </AppContext.Provider>
     );
-    fireEvent.click(screen.getByText(/close/i));
+  });
+
+  afterEach(cleanup);
+
+  it('calls dipatch on button click', () => {
+    fireEvent.click(screen.getByTestId('modal-close-btn'));
 
     expect(dispatch).toHaveBeenCalledWith({
       type: AppAactions.TOGGLE_JSON_VIEW,
