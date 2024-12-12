@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import JsonView from 'components/JsonView';
 import { AppContext } from 'context/AppContext';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 
 describe('<JsonView />', () => {
   const state = {
@@ -20,11 +20,11 @@ describe('<JsonView />', () => {
 
   afterEach(cleanup);
 
-  it('calls dipatch on button click', () => {
+  it('calls dispatch on button click', () => {
     fireEvent.click(screen.getByTestId('modal-close-btn'));
 
     expect(dispatch).toHaveBeenCalledWith({
-      type: AppAactions.TOGGLE_JSON_VIEW,
+      type: AppActions.TOGGLE_JSON_VIEW,
       payload: 'none',
     });
   });

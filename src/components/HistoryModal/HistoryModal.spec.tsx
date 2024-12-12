@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { AppContext } from 'context/AppContext';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 import HistoryModal from 'components/HistoryModal';
 import * as StorageService from 'services/storage';
 
@@ -45,7 +45,7 @@ describe('<HistoryModal />', () => {
     fireEvent.click(screen.getByTestId('modal-close-btn'));
 
     expect(dispatch).toHaveBeenCalledWith({
-      type: AppAactions.TOGGLE_HISTORY_MODAL,
+      type: AppActions.TOGGLE_HISTORY_MODAL,
     });
   });
 
@@ -60,7 +60,7 @@ describe('<HistoryModal />', () => {
 
     it('restore history when restore button click', () => {
       expect(dispatch).toHaveBeenNthCalledWith(1, {
-        type: AppAactions.LOAD_CODE_SAMPLE,
+        type: AppActions.LOAD_CODE_SAMPLE,
         payload: {
           codeSample: mockHistory[historyItemIndex].code,
           codeSampleName: '',
@@ -70,7 +70,7 @@ describe('<HistoryModal />', () => {
 
     it('dismiss the modal', () => {
       expect(dispatch).toHaveBeenNthCalledWith(2, {
-        type: AppAactions.TOGGLE_HISTORY_MODAL,
+        type: AppActions.TOGGLE_HISTORY_MODAL,
       });
     });
   });

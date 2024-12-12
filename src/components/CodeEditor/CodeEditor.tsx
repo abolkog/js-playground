@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 
 import { AppContext } from 'context/AppContext';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 import useCodeRunner from 'hooks/useCodeRunner';
 
 const CodeEditor: React.FC = () => {
@@ -47,12 +47,12 @@ const CodeEditor: React.FC = () => {
       keybindings: [monaco.KeyMod.CtrlCmd + monaco.KeyCode.KeyL],
       contextMenuGroupId: 'navigation',
       contextMenuOrder: 1,
-      run: () => dispatch({ type: AppAactions.CLEAR_RESULT }),
+      run: () => dispatch({ type: AppActions.CLEAR_RESULT }),
     });
 
     editorInstance.onDidChangeModelContent(() => {
       dispatch({
-        type: AppAactions.UPDATE_CODE,
+        type: AppActions.UPDATE_CODE,
         payload: editorInstance.getValue(),
       });
     });

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import { render, screen } from '@testing-library/react';
 import Console from 'components/Console';
 import { AppContext } from 'context/AppContext';
@@ -44,7 +43,7 @@ describe('<Console />', () => {
     );
   });
 
-  it('stringfy result that is not a string', () => {
+  it('stringify result that is not a string', () => {
     const result = [{ message: 'result' }, 'item'];
     state.result = result;
     render(

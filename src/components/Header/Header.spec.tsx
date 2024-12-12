@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import Header from 'components/Header';
 import { AppContext } from 'context/AppContext';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 
 describe('<Header />', () => {
   describe('header actions', () => {
@@ -25,28 +25,28 @@ describe('<Header />', () => {
       fireEvent.click(screen.getByText('About'));
       expect(dispatch).toHaveBeenCalledWith({
         payload: 'block',
-        type: AppAactions.TOGGLE_ABOUT_MODAL,
+        type: AppActions.TOGGLE_ABOUT_MODAL,
       });
     });
     it('toggle the theme when toggle button is click', () => {
       fireEvent.click(screen.getByTestId('app-theme-button-vs-dark'));
       expect(dispatch).toHaveBeenCalledWith({
         payload: 'vs-dark',
-        type: AppAactions.TOGGLE_THEME,
+        type: AppActions.TOGGLE_THEME,
       });
     });
 
     it('dispatch execute code action when run button is clicked', () => {
       fireEvent.click(screen.getByTestId('actionbutton-button-execute'));
       expect(dispatch).toHaveBeenCalledWith({
-        type: AppAactions.CODE_RUNNING,
+        type: AppActions.CODE_RUNNING,
       });
     });
 
     it('dispatch clear result action when clear button is clicked', () => {
       fireEvent.click(screen.getByTestId('actionbutton-button-clear'));
       expect(dispatch).toHaveBeenCalledWith({
-        type: AppAactions.CLEAR_RESULT,
+        type: AppActions.CLEAR_RESULT,
       });
     });
 
@@ -55,7 +55,7 @@ describe('<Header />', () => {
         target: { value: 'Axios' },
       });
       expect(dispatch).toHaveBeenCalledWith({
-        type: AppAactions.LOAD_CODE_SAMPLE,
+        type: AppActions.LOAD_CODE_SAMPLE,
         payload: expect.objectContaining({
           codeSampleName: 'Axios',
         }),

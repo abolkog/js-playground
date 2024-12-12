@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext } from 'react';
 import ActionButton from 'components/ActionButton';
 import { AppContext } from 'context/AppContext';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 import { CODE_SAMPLES, EDITOR_THEMES } from 'helpers/const';
 import useCodeRunner from 'hooks/useCodeRunner';
 
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
       codeSampleName: value,
     };
 
-    dispatch({ type: AppAactions.LOAD_CODE_SAMPLE, payload });
+    dispatch({ type: AppActions.LOAD_CODE_SAMPLE, payload });
   };
 
   return (
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
               style={{ cursor: 'pointer' }}
               onClick={() =>
                 dispatch({
-                  type: AppAactions.TOGGLE_ABOUT_MODAL,
+                  type: AppActions.TOGGLE_ABOUT_MODAL,
                   payload: 'block',
                 })
               }
@@ -82,7 +82,7 @@ const Header: React.FC = () => {
                 }`}
                 onClick={() => {
                   dispatch({
-                    type: AppAactions.TOGGLE_THEME,
+                    type: AppActions.TOGGLE_THEME,
                     payload: item.value,
                   });
                 }}
@@ -95,13 +95,13 @@ const Header: React.FC = () => {
           <span style={{ marginLeft: 20, marginRight: 20 }} />
           <ActionButton
             type="clear"
-            onClick={() => dispatch({ type: AppAactions.CLEAR_RESULT })}
+            onClick={() => dispatch({ type: AppActions.CLEAR_RESULT })}
           />
 
           <span style={{ marginLeft: 20, marginRight: 20 }} />
           <ActionButton
             type="history"
-            onClick={() => dispatch({ type: AppAactions.TOGGLE_HISTORY_MODAL })}
+            onClick={() => dispatch({ type: AppActions.TOGGLE_HISTORY_MODAL })}
           />
 
           <span style={{ marginLeft: 20, marginRight: 20 }} />

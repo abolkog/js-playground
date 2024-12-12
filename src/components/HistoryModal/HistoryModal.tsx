@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { AppContext } from 'context/AppContext';
 import Modal from 'components/Modal';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 import { getHistory } from 'services/storage';
 
 type HistoryModalProps = {};
@@ -12,7 +12,7 @@ const HistoryModal: React.FC<HistoryModalProps> = () => {
 
   const history = getHistory();
 
-  const makeKey = (item: HisotryItem, index: number) => `${item.date}_${index}`;
+  const makeKey = (item: HistoryItem, index: number) => `${item.date}_${index}`;
 
   const handleHeaderButtonClick = (index: number) => {
     if (index === activeIndex) {
@@ -20,20 +20,20 @@ const HistoryModal: React.FC<HistoryModalProps> = () => {
     } else setActiveIndex(index);
   };
 
-  const handleRestore = (item: HisotryItem) => () => {
+  const handleRestore = (item: HistoryItem) => () => {
     const payload = {
       codeSample: item.code,
       codeSampleName: '',
     };
 
-    dispatch({ type: AppAactions.LOAD_CODE_SAMPLE, payload });
-    dispatch({ type: AppAactions.TOGGLE_HISTORY_MODAL });
+    dispatch({ type: AppActions.LOAD_CODE_SAMPLE, payload });
+    dispatch({ type: AppActions.TOGGLE_HISTORY_MODAL });
   };
 
   return (
     <Modal
       isOpen={state.historyModalShown}
-      onClose={() => dispatch({ type: AppAactions.TOGGLE_HISTORY_MODAL })}
+      onClose={() => dispatch({ type: AppActions.TOGGLE_HISTORY_MODAL })}
       title="Code History"
     >
       <div className="accordion" data-testid="history-accordion">
