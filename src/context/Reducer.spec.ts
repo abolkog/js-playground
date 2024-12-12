@@ -1,4 +1,4 @@
-import { AppAactions, reducer } from 'context/Reducer';
+import { AppActions, reducer } from 'context/Reducer';
 
 describe('Reducer tests', () => {
   const INITIAL_STATE: AppState = {
@@ -18,7 +18,7 @@ describe('Reducer tests', () => {
   it('update and persist code when update code action is dispatched', () => {
     const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
     const state = reducer(INITIAL_STATE, {
-      type: AppAactions.UPDATE_CODE,
+      type: AppActions.UPDATE_CODE,
       payload: 'some code',
     });
     expect(state.code).toEqual('some code');
@@ -27,14 +27,14 @@ describe('Reducer tests', () => {
 
   it('update loading flag when code running action is dispatched', () => {
     const state = reducer(INITIAL_STATE, {
-      type: AppAactions.CODE_RUNNING,
+      type: AppActions.CODE_RUNNING,
     });
     expect(state.loading).toEqual(true);
   });
 
   it('update result array when code run success action is dispatched', () => {
     const state = reducer(INITIAL_STATE, {
-      type: AppAactions.CODE_RUN_SUCCESS,
+      type: AppActions.CODE_RUN_SUCCESS,
       payload: 'result',
     });
     expect(state.result[0]).toEqual('result');
@@ -42,14 +42,14 @@ describe('Reducer tests', () => {
 
   it('clear result array when clear result action is dispatched', () => {
     const state = reducer(INITIAL_STATE, {
-      type: AppAactions.CLEAR_RESULT,
+      type: AppActions.CLEAR_RESULT,
     });
     expect(state.result.length).toEqual(0);
   });
 
   it('update error string when code run error action is dispatched', () => {
     const state = reducer(INITIAL_STATE, {
-      type: AppAactions.CODE_RUN_ERROR,
+      type: AppActions.CODE_RUN_ERROR,
       payload: 'error',
     });
     expect(state.error).toEqual('error');
@@ -57,15 +57,15 @@ describe('Reducer tests', () => {
 
   it('update about modal flag when toggle modal action is dispatched', () => {
     const state = reducer(INITIAL_STATE, {
-      type: AppAactions.TOGGLE_ABOUT_MODAL,
+      type: AppActions.TOGGLE_ABOUT_MODAL,
       payload: 'block',
     });
     expect(state.display).toEqual('block');
   });
 
-  it('update theme stgate when toggle theme action is dispatched', () => {
+  it('update theme state when toggle theme action is dispatched', () => {
     const state = reducer(INITIAL_STATE, {
-      type: AppAactions.TOGGLE_THEME,
+      type: AppActions.TOGGLE_THEME,
       payload: 'vs-light',
     });
     expect(state.theme).toEqual('vs-light');
@@ -77,7 +77,7 @@ describe('Reducer tests', () => {
       codeSampleName: 'Axios',
     };
     const state = reducer(INITIAL_STATE, {
-      type: AppAactions.LOAD_CODE_SAMPLE,
+      type: AppActions.LOAD_CODE_SAMPLE,
       payload,
     });
     expect(state.codeSample).toEqual(payload.codeSample);

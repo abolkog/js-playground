@@ -1,6 +1,6 @@
 import { saveToHistory, setLocalStorage, STORAGE } from 'services/storage';
 
-export const AppAactions = {
+export const AppActions = {
   UPDATE_CODE: 'UPDATE_CODE',
   EXECUTE_CODE: 'EXECUTE_CODE',
   CODE_RUNNING: 'CODE_RUNNING',
@@ -48,25 +48,25 @@ const setAppTheme = (state: AppState, action: Action) => {
 
 export const reducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
-    case AppAactions.UPDATE_CODE:
+    case AppActions.UPDATE_CODE:
       return handleCodeUpdate(state, action);
-    case AppAactions.CODE_RUNNING:
+    case AppActions.CODE_RUNNING:
       return handleCodeRunning(state);
-    case AppAactions.CODE_RUN_SUCCESS:
+    case AppActions.CODE_RUN_SUCCESS:
       return handleCodeSuccess(state, action);
-    case AppAactions.CODE_RUN_ERROR:
+    case AppActions.CODE_RUN_ERROR:
       return { ...state, error: action.payload as string, loading: false };
-    case AppAactions.TOGGLE_ABOUT_MODAL:
+    case AppActions.TOGGLE_ABOUT_MODAL:
       return { ...state, display: action.payload as DisplayType };
-    case AppAactions.TOGGLE_JSON_VIEW:
+    case AppActions.TOGGLE_JSON_VIEW:
       return { ...state, jsonView: action.payload as DisplayType };
-    case AppAactions.TOGGLE_THEME:
+    case AppActions.TOGGLE_THEME:
       return setAppTheme(state, action);
-    case AppAactions.LOAD_CODE_SAMPLE:
+    case AppActions.LOAD_CODE_SAMPLE:
       return handleLoadCodeSample(state, action);
-    case AppAactions.CLEAR_RESULT:
+    case AppActions.CLEAR_RESULT:
       return { ...state, result: [] };
-    case AppAactions.TOGGLE_HISTORY_MODAL:
+    case AppActions.TOGGLE_HISTORY_MODAL:
       return { ...state, historyModalShown: !state.historyModalShown };
     default:
       return state;

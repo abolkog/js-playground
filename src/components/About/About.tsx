@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { LIBRARIES } from 'helpers/const';
 import { AppContext } from 'context/AppContext';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 import Modal from 'components/Modal';
 
 const About: React.FC = () => {
@@ -10,7 +10,7 @@ const About: React.FC = () => {
   const open = state.display !== 'none';
 
   const handleClose = () => {
-    dispatch({ type: AppAactions.TOGGLE_ABOUT_MODAL, payload: 'none' });
+    dispatch({ type: AppActions.TOGGLE_ABOUT_MODAL, payload: 'none' });
   };
 
   return (

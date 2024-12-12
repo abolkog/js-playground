@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { transpile } from 'typescript';
 import { AppContext } from 'context/AppContext';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 
 const useCodeRunner = () => {
   const { dispatch } = useContext(AppContext);
@@ -18,12 +18,12 @@ const useCodeRunner = () => {
 
   const runCode = async (code: string) => {
     try {
-      dispatch({ type: AppAactions.CODE_RUNNING });
+      dispatch({ type: AppActions.CODE_RUNNING });
       const result = await evalCode(transpile(code));
-      dispatch({ type: AppAactions.CODE_RUN_SUCCESS, payload: result });
+      dispatch({ type: AppActions.CODE_RUN_SUCCESS, payload: result });
     } catch (e) {
       dispatch({
-        type: AppAactions.CODE_RUN_ERROR,
+        type: AppActions.CODE_RUN_ERROR,
         payload: (e as Error).message,
       });
     }

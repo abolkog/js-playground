@@ -17,7 +17,7 @@ interface Library {
   version: string;
 }
 
-interface HisotryItem {
+interface HistoryItem {
   code: string;
   date: string;
 }

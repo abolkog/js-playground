@@ -7,7 +7,7 @@ describe('<ContextMenu/>', () => {
     onClick: jest.fn(),
     onClose: jest.fn(),
   };
-  it('does not render if poistion is not defined', () => {
+  it('does not render if position is not defined', () => {
     render(<ContextMenu {...props} position={null} />);
     expect(screen.queryByTestId('app-context-menu')).not.toBeInTheDocument();
   });

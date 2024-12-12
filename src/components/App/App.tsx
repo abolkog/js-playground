@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import Header from 'components/Header';
 import About from 'components/About';
 import { AppContext } from 'context/AppContext';
-import { AppAactions } from 'context/Reducer';
+import { AppActions } from 'context/Reducer';
 import ContextMenu from 'components/ContextMenu';
 import JsonView from 'components/JsonView';
 import CodeEditor from 'components/CodeEditor';
@@ -16,7 +16,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const consoleProxy = console.log;
     console.log = msg => {
-      dispatch({ type: AppAactions.CODE_RUN_SUCCESS, payload: msg });
+      dispatch({ type: AppActions.CODE_RUN_SUCCESS, payload: msg });
       consoleProxy(msg);
     };
   }, []);
@@ -49,7 +49,7 @@ const App: React.FC = () => {
         position={position}
         onClose={() => setPosition(null)}
         onClick={() => {
-          dispatch({ type: AppAactions.TOGGLE_JSON_VIEW, payload: 'block' });
+          dispatch({ type: AppActions.TOGGLE_JSON_VIEW, payload: 'block' });
           setPosition(null);
         }}
       />

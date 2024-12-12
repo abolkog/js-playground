@@ -21,7 +21,7 @@ export const clearLocalStorage = (key: string) => {
 };
 
 export const saveToHistory = (code: string) => {
-  const history: HisotryItem[] = JSON.parse(
+  const history: HistoryItem[] = JSON.parse(
     localStorage.getItem(STORAGE.HISTORY) || '[]'
   );
 
@@ -40,9 +40,9 @@ export const saveToHistory = (code: string) => {
   }
 };
 
-export const getHistory = (): HisotryItem[] => {
+export const getHistory = (): HistoryItem[] => {
   const history = JSON.parse(localStorage.getItem(STORAGE.HISTORY) || '[]');
-  return history.map((item: HisotryItem) => ({
+  return history.map((item: HistoryItem) => ({
     ...item,
     code: decompress(item.code),
   }));
