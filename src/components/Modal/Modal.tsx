@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ModalProps {
+interface ModalProps extends React.PropsWithChildren {
   isOpen: boolean;
   onClose: () => void;
   title?: string;

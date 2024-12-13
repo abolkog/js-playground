@@ -6,14 +6,13 @@ import { AppActions } from 'context/Reducer';
 describe('<Header />', () => {
   describe('header actions', () => {
     const state = { codeSample: '', codeSampleName: '' } as AppState;
-    let dispatch: any;
+    let dispatch: jest.Mock;
     beforeEach(() => {
       dispatch = jest.fn();
       render(
-        // eslint-disable-next-line react/jsx-no-constructed-context-values
         <AppContext.Provider value={{ state, dispatch }}>
           <Header />
-        </AppContext.Provider>
+        </AppContext.Provider>,
       );
     });
 

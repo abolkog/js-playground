@@ -1,4 +1,3 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
@@ -12,7 +11,6 @@ module.exports = {
     '!src/components/App/tabs.ts',
     '!src/helpers/const.ts',
     '!src/helpers/global.ts',
-    '!src/reportWebVitals.ts',
   ],
   coverageThreshold: {
     global: {

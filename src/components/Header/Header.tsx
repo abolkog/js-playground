@@ -72,7 +72,6 @@ const Header: React.FC = () => {
 
           <div className="btn-group" role="group">
             {EDITOR_THEMES.map(item => (
-              // eslint-disable-next-line jsx-a11y/control-has-associated-label
               <button
                 key={item.id}
                 type="button"
