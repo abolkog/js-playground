@@ -1,8 +1,7 @@
-/* eslint-disable no-template-curly-in-string */
 export const LIBRARIES: Library[] = [
   {
     name: 'redux',
-    version: '4.2.0',
+    version: '5.0.1',
     url: 'https://redux.js.org/',
     use: 'Redux',
   },
@@ -14,19 +13,19 @@ export const LIBRARIES: Library[] = [
   },
   {
     name: 'axios',
-    version: '0.21.4',
+    version: '1.7.9',
     url: 'https://github.com/axios/axios',
     use: 'axios',
   },
   {
     name: 'luxon',
-    version: '1.28.0',
+    version: '3.5.0',
     url: 'https://moment.github.io/luxon/docs',
     use: 'luxon',
   },
   {
     name: 'date-fns',
-    version: '2.29.3',
+    version: '4.1.0',
     url: 'https://date-fns.org/',
     use: 'dfn',
   },

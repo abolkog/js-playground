@@ -4,9 +4,7 @@ import Modal from 'components/Modal';
 import { AppActions } from 'context/Reducer';
 import { getHistory } from 'services/storage';
 
-type HistoryModalProps = {};
-
-const HistoryModal: React.FC<HistoryModalProps> = () => {
+const HistoryModal: React.FC = () => {
   const { state, dispatch } = useContext(AppContext);
   const [activeIndex, setActiveIndex] = useState(-1);
 

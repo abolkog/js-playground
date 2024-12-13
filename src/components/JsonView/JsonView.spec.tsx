@@ -14,7 +14,7 @@ describe('<JsonView />', () => {
     render(
       <AppContext.Provider value={{ state, dispatch }}>
         <JsonView />
-      </AppContext.Provider>
+      </AppContext.Provider>,
     );
   });
 

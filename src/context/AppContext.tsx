@@ -8,6 +8,7 @@ const getTheme = (): Theme => {
     return themeFromStorage;
   return 'vs-dark';
 };
+
 const initialState: AppState = {
   code: getLocalStorage(STORAGE.CODE),
   codeSample: '',
@@ -27,7 +28,9 @@ export const AppContext = createContext<{
   dispatch: React.Dispatch<Action>;
 }>({ state: initialState, dispatch: () => {} });
 
-export const AppProvider: React.FunctionComponent = ({ children }) => {
+export const AppProvider: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const value = useMemo(
@@ -35,7 +38,7 @@ export const AppProvider: React.FunctionComponent = ({ children }) => {
       state,
       dispatch,
     }),
-    [state]
+    [state],
   );
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
