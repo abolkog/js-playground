@@ -1,23 +1,17 @@
-interface CodeSample {
+type CodeSample = {
   id: number;
   name: string;
   codeSample: string;
-}
+};
 
-interface EditorTheme {
-  id: number;
-  value: Theme;
-  icon: string;
-}
-
-interface Library {
+type Library = {
   name: string;
   url: string;
   use: string;
   version: string;
-}
+};
 
-interface HistoryItem {
+type HistoryItem = {
   code: string;
   date: string;
-}
+};

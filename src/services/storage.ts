@@ -5,7 +5,6 @@ const MAX_HISTORY_SIZE = 20;
 export const STORAGE = {
   CODE: '@abolkog/jscode',
   HISTORY: 'abolkog/jscode-history',
-  THEME: 'abolkog/jscode-theme',
 };
 
 export const getLocalStorage = (key: string, defaultValue = '') => {
@@ -22,7 +21,7 @@ export const clearLocalStorage = (key: string) => {
 
 export const saveToHistory = (code: string) => {
   const history: HistoryItem[] = JSON.parse(
-    localStorage.getItem(STORAGE.HISTORY) || '[]'
+    localStorage.getItem(STORAGE.HISTORY) || '[]',
   );
 
   // Compress the code before saving

@@ -7,8 +7,6 @@ export const AppActions = {
   CODE_RUN_SUCCESS: 'CODE_RUN_SUCCESS',
   CODE_RUN_ERROR: 'CODE_RUN_ERROR',
   TOGGLE_ABOUT_MODAL: 'TOGGLE_ABOUT_MODAL',
-  TOGGLE_JSON_VIEW: 'TOGGLE_JSON_VIEW',
-  TOGGLE_THEME: 'TOGGLE_THEME',
   CLEAR_RESULT: 'CLEAR_RESULT',
   LOAD_CODE_SAMPLE: 'LOAD_CODE_SAMPLE',
   TOGGLE_HISTORY_MODAL: 'TOGGLE_HISTORY_MODAL',
@@ -43,11 +41,6 @@ const handleCodeRunning = (state: AppState): AppState => {
   return { ...state, loading: true };
 };
 
-const setAppTheme = (state: AppState, action: Action) => {
-  setLocalStorage(STORAGE.THEME, action.payload as string);
-  return { ...state, theme: action.payload as Theme };
-};
-
 export const reducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
     case AppActions.UPDATE_CODE:
@@ -64,10 +57,6 @@ export const reducer = (state: AppState, action: Action): AppState => {
         sidebarOpen: false,
         display: action.payload as DisplayType,
       };
-    case AppActions.TOGGLE_JSON_VIEW:
-      return { ...state, jsonView: action.payload as DisplayType };
-    case AppActions.TOGGLE_THEME:
-      return setAppTheme(state, action);
     case AppActions.LOAD_CODE_SAMPLE:
       return handleLoadCodeSample(state, action);
     case AppActions.CLEAR_RESULT:

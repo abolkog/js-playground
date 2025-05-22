@@ -1,5 +1,4 @@
-type Theme = 'vs-dark' | 'vs-light';
-type DisplayType = 'none' | 'block';
+type DisplayType = 'none' | 'block'; // FIXME: remove ?
 
 type AppState = {
   code: string;
@@ -8,10 +7,8 @@ type AppState = {
   result: unknown[];
   error: string;
   loading: boolean;
-  theme: Theme;
   display: DisplayType;
   position: null;
-  jsonView: string;
   historyModalShown: boolean;
   sidebarOpen: boolean;
 };
