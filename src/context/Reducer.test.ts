@@ -9,7 +9,6 @@ describe('Reducer tests', () => {
     error: '',
     loading: false,
     display: 'none',
-    position: null,
     historyModalShown: false,
     sidebarOpen: false,
   };

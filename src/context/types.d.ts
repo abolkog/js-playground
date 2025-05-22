@@ -8,22 +8,18 @@ type AppState = {
   error: string;
   loading: boolean;
   display: DisplayType;
-  position: null;
   historyModalShown: boolean;
   sidebarOpen: boolean;
 };
 
-type Action = {
-  type: string;
-  payload?: unknown; // FIXME:
+type Payload = {
+  codeSample?: string;
+  codeSampleName?: string;
 };
 
-type Payload = {
+type Action = {
   type: string;
-  payload?: {
-    codeSample?: string;
-    codeSampleName?: string;
-  };
+  payload?: Payload | string;
 };
 
 type ActionBarChildItem = Pick<ActionBarItem, 'label' | 'payload'>;
@@ -31,6 +27,6 @@ type ActionBarChildItem = Pick<ActionBarItem, 'label' | 'payload'>;
 type ActionBarItem = {
   label: string;
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  payload?: Payload;
+  payload?: Action;
   children?: ActionBarChildItem[];
 };

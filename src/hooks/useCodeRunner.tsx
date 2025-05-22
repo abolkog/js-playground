@@ -6,7 +6,7 @@ import { AppActions } from 'context/Reducer';
 const useCodeRunner = () => {
   const { dispatch } = useContext(AppContext);
 
-  const evalCode = (code: string) =>
+  const evalCode = (code: string): Promise<string> =>
     new Promise((resolve, reject) => {
       try {
         const result = eval(code);

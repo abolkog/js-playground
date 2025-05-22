@@ -11,7 +11,6 @@ const initialState: AppState = {
   error: '',
   loading: false,
   display: 'none',
-  position: null,
   historyModalShown: false,
 };
 
