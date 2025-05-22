@@ -1,17 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
-import Header from 'components/Header';
-import About from 'components/About';
+import Split from 'react-split';
+import Editor from '../CodeEditor/CodeEditor';
+import Console from 'components/Console';
+import { useContext, useEffect } from 'react';
 import { AppContext } from 'context/AppContext';
 import { AppActions } from 'context/Reducer';
-import ContextMenu from 'components/ContextMenu';
-import JsonView from 'components/JsonView';
-import CodeEditor from 'components/CodeEditor';
-import Console from 'components/Console';
-import HistoryModal from 'components/HistoryModal';
 
 const App: React.FC = () => {
   const { dispatch } = useContext(AppContext);
-  const [position, setPosition] = useState<MenuPosition | null>(null);
 
   useEffect(() => {
     const consoleProxy = console.log;
@@ -21,40 +16,25 @@ const App: React.FC = () => {
     };
   }, []);
 
-  const handleContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const { pageX, pageY } = event;
-    setPosition({ top: pageY, left: pageX });
-  };
-
   return (
-    <div className="flex flexColumn">
-      <Header />
-
-      <div className="flex flexColumn">
-        <div className="editorContainer">
-          <CodeEditor />
+    <div className="flex flex-col h-screen font-sans scheme-light">
+      <Split
+        className="flex flex-1 flex-col overflow-hidden"
+        sizes={[75, 25]}
+        minSize={0}
+        expandToMin={true}
+        dragInterval={1}
+        direction="vertical"
+        cursor="row-resize"
+      >
+        <div className="bg-[#1e1e1e] border-r border-zinc-700 overflow-hidden">
+          <Editor />
         </div>
 
-        <div className=" consoleContainer" onContextMenu={handleContextMenu}>
+        <div className="bg-white text-black overflow-auto">
           <Console />
         </div>
-      </div>
-
-      <About />
-
-      <JsonView />
-
-      <ContextMenu
-        position={position}
-        onClose={() => setPosition(null)}
-        onClick={() => {
-          dispatch({ type: AppActions.TOGGLE_JSON_VIEW, payload: 'block' });
-          setPosition(null);
-        }}
-      />
-
-      <HistoryModal />
+      </Split>
     </div>
   );
 };

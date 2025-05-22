@@ -11,3 +11,6 @@ _.extend(window, {
   dfn,
   Redux,
 });
+
+export const classNames = (...classes: string[]) =>
+  classes.filter(Boolean).join(' ');

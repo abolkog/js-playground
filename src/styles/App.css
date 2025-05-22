@@ -1,143 +1,18 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+@import "tailwindcss";
+
+@theme {
+    --font-sans: InterVariable, sans-serif; 
 }
 
-#root {
-  display: flex;
-  flex: 1;
-  height: 100%;
+.split {
+    display: flex;
+    height: 100%;
 }
 
-.flex {
-  display: flex;
-  flex: 1;
+.gutter {
+    background-color: #444;
+    cursor: col-resize;
 }
 
-.flexColumn {
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.editorContainer {
-  height: 70vh;
-}
-
-.consoleContainer {
-  height: 20vh;
-  display: flex;
-  flex: 1
-}
-
-
-.monaco-editor,
-.overflow-guard {
-  width: 100% !important;
-}
-
-.console {
-  word-wrap: break-word;
-  word-break: break-all;
-  font-size: large;
-  font-family: sans-serif;
-  padding: 20px;
-  overflow-y: auto;
-  width: 100%;
-}
-
-.console-light {
-  background-color: #fff;
-  color: #3a3f44;
-  border-top: 1px solid #3a3f44;
-}
-
-.error {
-  color: #e54e4e;
-}
-
-.small-text {
-  font-size: 11px;
-}
-
-.app-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu {
-  position: fixed;
-  list-style: none;
-  user-select: none;
-  background-color: #ffffff;
-  box-sizing: border-box;
-  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
-  border-radius: 6px;
-  padding: 6px 10px;
-  min-width: 200px;
-  z-index: 100;
-}
-
-.menu li {
-  cursor: pointer;
-  padding: 0px 5px;
-}
-
-.menu li:hover {
-  background-color: #3a3f44;
-}
-
-.clickable {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 5px;
-  font: inherit;
-  outline: 0;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-}
-
-
-.text-sm {
-  color: #aaa;
-  font-size: 0.7rem;
-}
-
-
-
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modalContent {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.closeButton {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
+.gutter.gutter-horizontal {
+    width: 6px; }
