@@ -1,7 +1,7 @@
 type Theme = 'vs-dark' | 'vs-light';
 type DisplayType = 'none' | 'block';
 
-interface AppState {
+type AppState = {
   code: string;
   codeSample: string;
   codeSampleName: string;
@@ -13,9 +13,27 @@ interface AppState {
   position: null;
   jsonView: string;
   historyModalShown: boolean;
-}
+  sidebarOpen: boolean;
+};
 
-interface Action {
+type Action = {
   type: string;
-  payload?: unknown; // FIXME: String it ?
-}
+  payload?: unknown; // FIXME:
+};
+
+type Payload = {
+  type: string;
+  payload?: {
+    codeSample?: string;
+    codeSampleName?: string;
+  };
+};
+
+type ActionBarChildItem = Pick<ActionBarItem, 'label' | 'payload'>;
+
+type ActionBarItem = {
+  label: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  payload?: Payload;
+  children?: ActionBarChildItem[];
+};

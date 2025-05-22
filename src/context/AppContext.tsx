@@ -10,6 +10,7 @@ const getTheme = (): Theme => {
 };
 
 const initialState: AppState = {
+  sidebarOpen: false,
   code: getLocalStorage(STORAGE.CODE),
   codeSample: '',
   codeSampleName: '',

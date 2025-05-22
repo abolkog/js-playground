@@ -12,6 +12,8 @@ export const AppActions = {
   CLEAR_RESULT: 'CLEAR_RESULT',
   LOAD_CODE_SAMPLE: 'LOAD_CODE_SAMPLE',
   TOGGLE_HISTORY_MODAL: 'TOGGLE_HISTORY_MODAL',
+  SHOW_SIDEBAR: 'SHOW_SIDEBAR',
+  HIDE_SIDEBAR: 'HIDE_SIDEBAR',
 };
 
 const handleCodeUpdate = (state: AppState, action: Action): AppState => {
@@ -25,7 +27,7 @@ const handleCodeSuccess = (state: AppState, action: Action): AppState => {
   if (action.payload) {
     result.push(action.payload);
   }
-  return { ...state, error: '', result, loading: false };
+  return { ...state, error: '', result, loading: false, sidebarOpen: false };
 };
 
 const handleLoadCodeSample = (state: AppState, action: Action): AppState => {
@@ -33,7 +35,7 @@ const handleLoadCodeSample = (state: AppState, action: Action): AppState => {
     string,
     string
   >;
-  return { ...state, codeSample, codeSampleName };
+  return { ...state, codeSample, codeSampleName, sidebarOpen: false };
 };
 
 const handleCodeRunning = (state: AppState): AppState => {
@@ -57,7 +59,11 @@ export const reducer = (state: AppState, action: Action): AppState => {
     case AppActions.CODE_RUN_ERROR:
       return { ...state, error: action.payload as string, loading: false };
     case AppActions.TOGGLE_ABOUT_MODAL:
-      return { ...state, display: action.payload as DisplayType };
+      return {
+        ...state,
+        sidebarOpen: false,
+        display: action.payload as DisplayType,
+      };
     case AppActions.TOGGLE_JSON_VIEW:
       return { ...state, jsonView: action.payload as DisplayType };
     case AppActions.TOGGLE_THEME:
@@ -65,9 +71,17 @@ export const reducer = (state: AppState, action: Action): AppState => {
     case AppActions.LOAD_CODE_SAMPLE:
       return handleLoadCodeSample(state, action);
     case AppActions.CLEAR_RESULT:
-      return { ...state, result: [] };
+      return { ...state, sidebarOpen: false, result: [] };
     case AppActions.TOGGLE_HISTORY_MODAL:
-      return { ...state, historyModalShown: !state.historyModalShown };
+      return {
+        ...state,
+        sidebarOpen: false,
+        historyModalShown: !state.historyModalShown,
+      };
+    case AppActions.SHOW_SIDEBAR:
+      return { ...state, sidebarOpen: true };
+    case AppActions.HIDE_SIDEBAR:
+      return { ...state, sidebarOpen: false };
     default:
       return state;
   }
