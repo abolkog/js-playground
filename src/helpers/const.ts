@@ -100,16 +100,3 @@ console.log(calculate({ operation: '*', operand1: 4, operand2: 6 }));   // Outpu
 `,
   },
 ];
-
-export const EDITOR_THEMES: EditorTheme[] = [
-  {
-    id: 1,
-    value: 'vs-dark',
-    icon: 'moon',
-  },
-  {
-    id: 2,
-    value: 'vs-light',
-    icon: 'sun',
-  },
-];

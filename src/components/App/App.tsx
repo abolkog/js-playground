@@ -31,9 +31,7 @@ const App: React.FC = () => {
           <Editor />
         </div>
 
-        <div className="bg-white text-black overflow-auto">
-          <Console />
-        </div>
+        <Console />
       </Split>
     </div>
   );

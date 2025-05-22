@@ -8,10 +8,8 @@ describe('Reducer tests', () => {
     result: [],
     error: '',
     loading: false,
-    theme: 'vs-dark',
     display: 'none',
     position: null,
-    jsonView: '',
     historyModalShown: false,
     sidebarOpen: false,
   };
@@ -62,14 +60,6 @@ describe('Reducer tests', () => {
       payload: 'block',
     });
     expect(state.display).toEqual('block');
-  });
-
-  it('update theme state when toggle theme action is dispatched', () => {
-    const state = reducer(INITIAL_STATE, {
-      type: AppActions.TOGGLE_THEME,
-      payload: 'vs-light',
-    });
-    expect(state.theme).toEqual('vs-light');
   });
 
   it('update code sample value when load code sample action is dispatched', () => {

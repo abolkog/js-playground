@@ -17,7 +17,7 @@ const CodeEditor: React.FC = () => {
       value: '',
       language: 'typescript',
       fontSize: 20,
-      theme: state.theme,
+      theme: 'vs-dark',
       minimap: {
         enabled: false,
       },
@@ -25,7 +25,7 @@ const CodeEditor: React.FC = () => {
 
     const editorInstance = monaco.editor.create(
       editorRef.current!,
-      editorConfig
+      editorConfig,
     );
 
     monaco.editor.setModelLanguage(editorInstance.getModel()!, 'typescript');
@@ -68,10 +68,6 @@ const CodeEditor: React.FC = () => {
 
     return () => editor?.dispose();
   }, [editorRef.current]);
-
-  useEffect(() => {
-    editor?.updateOptions({ theme: state.theme });
-  }, [state.theme]);
 
   useEffect(() => {
     editor?.setValue(state.codeSample);
