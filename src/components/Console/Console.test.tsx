@@ -75,7 +75,7 @@ describe('<Console />', () => {
 
     // The component should pretty-print with 2 spaces for large objects
     expect(screen.getByTestId('console-result-item-0').textContent).toEqual(
-      JSON.stringify(largeObj, null, 2),
+      JSON.stringify(largeObj, null, 3),
     );
   });
 });

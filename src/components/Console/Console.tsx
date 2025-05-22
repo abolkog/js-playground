@@ -22,7 +22,7 @@ const Console: React.FC = () => {
       const key = createKey(index);
       const isObject = typeof item === 'object' && item !== null;
       const str = JSON.stringify(item);
-      const space = isObject && str.length > 60 ? 2 : 0;
+      const space = isObject && str.length > 60 ? 3 : 0;
 
       return (
         <div key={key} className="py-1.5">
