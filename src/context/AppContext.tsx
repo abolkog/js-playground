@@ -11,7 +11,7 @@ const initialState: AppState = {
   error: '',
   loading: false,
   display: 'none',
-  historyModalShown: false,
+  historyOpen: false,
 };
 
 export const AppContext = createContext<{

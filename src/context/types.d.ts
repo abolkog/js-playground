@@ -8,7 +8,7 @@ type AppState = {
   error: string;
   loading: boolean;
   display: DisplayType;
-  historyModalShown: boolean;
+  historyOpen: boolean;
   sidebarOpen: boolean;
 };
 

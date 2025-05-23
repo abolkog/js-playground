@@ -4,6 +4,7 @@ import Console from 'components/Console';
 import { useContext, useEffect } from 'react';
 import { AppContext } from 'context/AppContext';
 import { AppActions } from 'context/Reducer';
+import History from 'components/History';
 
 const App: React.FC = () => {
   const { dispatch } = useContext(AppContext);
@@ -33,6 +34,8 @@ const App: React.FC = () => {
 
         <Console />
       </Split>
+
+      <History />
     </div>
   );
 };

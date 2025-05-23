@@ -39,7 +39,7 @@ const actionBarItems: ActionBarItem[] = [
   {
     label: 'History',
     icon: ClockIcon,
-    payload: { type: AppActions.TOGGLE_HISTORY_MODAL },
+    payload: { type: AppActions.SHOW_HISTORY },
   },
   {
     label: 'Code Samples',

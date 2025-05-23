@@ -9,9 +9,10 @@ export const AppActions = {
   TOGGLE_ABOUT_MODAL: 'TOGGLE_ABOUT_MODAL',
   CLEAR_RESULT: 'CLEAR_RESULT',
   LOAD_CODE_SAMPLE: 'LOAD_CODE_SAMPLE',
-  TOGGLE_HISTORY_MODAL: 'TOGGLE_HISTORY_MODAL',
   SHOW_SIDEBAR: 'SHOW_SIDEBAR',
   HIDE_SIDEBAR: 'HIDE_SIDEBAR',
+  SHOW_HISTORY: 'SHOW_HISTORY',
+  HIDE_HISTORY: 'HIDE_HISTORY',
 };
 
 const handleCodeUpdate = (state: AppState, action: Action): AppState => {
@@ -61,11 +62,17 @@ export const reducer = (state: AppState, action: Action): AppState => {
       return handleLoadCodeSample(state, action);
     case AppActions.CLEAR_RESULT:
       return { ...state, sidebarOpen: false, result: [] };
-    case AppActions.TOGGLE_HISTORY_MODAL:
+    case AppActions.SHOW_HISTORY:
       return {
         ...state,
         sidebarOpen: false,
-        historyModalShown: !state.historyModalShown,
+        historyOpen: true,
+      };
+    case AppActions.HIDE_HISTORY:
+      return {
+        ...state,
+        sidebarOpen: false,
+        historyOpen: false,
       };
     case AppActions.SHOW_SIDEBAR:
       return { ...state, sidebarOpen: true };
