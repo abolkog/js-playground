@@ -3,15 +3,15 @@ import { getLocalStorage, STORAGE } from 'services/storage';
 import { reducer } from 'context/Reducer';
 
 const initialState: AppState = {
-  sidebarOpen: false,
   code: getLocalStorage(STORAGE.CODE),
   codeSample: '',
   codeSampleName: '',
   result: [],
   error: '',
   loading: false,
-  display: 'none',
+  sidebarOpen: false,
   historyOpen: false,
+  aboutModalOpen: false,
 };
 
 export const AppContext = createContext<{

@@ -117,7 +117,7 @@ const ActionBar: React.FC = () => {
         </li>
         <li className="-mx-6 mt-auto">
           <a
-            onClick={() => dispatch({ type: AppActions.TOGGLE_ABOUT_MODAL })}
+            onClick={() => dispatch({ type: AppActions.SHOW_ABOUT_MODAL })}
             className="text-gray-400 hover:bg-gray-800 hover:text-white group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold cursor-pointer"
           >
             <span className="sr-only">About</span>

@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react';
 import { AppContext } from 'context/AppContext';
 import { AppActions } from 'context/Reducer';
 import History from 'components/History';
+import About from 'components/About';
 
 const App: React.FC = () => {
   const { dispatch } = useContext(AppContext);
@@ -36,6 +37,7 @@ const App: React.FC = () => {
       </Split>
 
       <History />
+      <About />
     </div>
   );
 };

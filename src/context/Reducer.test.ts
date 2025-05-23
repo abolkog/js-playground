@@ -8,9 +8,9 @@ describe('Reducer tests', () => {
     result: [],
     error: '',
     loading: false,
-    display: 'none',
     sidebarOpen: false,
     historyOpen: false,
+    aboutModalOpen: false,
   };
 
   it('update and persist code when update code action is dispatched', () => {
@@ -51,14 +51,6 @@ describe('Reducer tests', () => {
       payload: 'error',
     });
     expect(state.error).toEqual('error');
-  });
-
-  it('update about modal flag when toggle modal action is dispatched', () => {
-    const state = reducer(INITIAL_STATE, {
-      type: AppActions.TOGGLE_ABOUT_MODAL,
-      payload: 'block',
-    });
-    expect(state.display).toEqual('block');
   });
 
   it('update code sample value when load code sample action is dispatched', () => {

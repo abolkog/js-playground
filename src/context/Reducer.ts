@@ -6,13 +6,14 @@ export const AppActions = {
   CODE_RUNNING: 'CODE_RUNNING',
   CODE_RUN_SUCCESS: 'CODE_RUN_SUCCESS',
   CODE_RUN_ERROR: 'CODE_RUN_ERROR',
-  TOGGLE_ABOUT_MODAL: 'TOGGLE_ABOUT_MODAL',
   CLEAR_RESULT: 'CLEAR_RESULT',
   LOAD_CODE_SAMPLE: 'LOAD_CODE_SAMPLE',
   SHOW_SIDEBAR: 'SHOW_SIDEBAR',
   HIDE_SIDEBAR: 'HIDE_SIDEBAR',
   SHOW_HISTORY: 'SHOW_HISTORY',
   HIDE_HISTORY: 'HIDE_HISTORY',
+  SHOW_ABOUT_MODAL: 'SHOW_ABOUT_MODAL',
+  HIDE_ABOUT_MODAL: 'HIDE_ABOUT_MODAL',
 };
 
 const handleCodeUpdate = (state: AppState, action: Action): AppState => {
@@ -52,11 +53,17 @@ export const reducer = (state: AppState, action: Action): AppState => {
       return handleCodeSuccess(state, action);
     case AppActions.CODE_RUN_ERROR:
       return { ...state, error: action.payload as string, loading: false };
-    case AppActions.TOGGLE_ABOUT_MODAL:
+    case AppActions.SHOW_ABOUT_MODAL:
       return {
         ...state,
         sidebarOpen: false,
-        display: action.payload as DisplayType,
+        aboutModalOpen: true,
+      };
+    case AppActions.HIDE_ABOUT_MODAL:
+      return {
+        ...state,
+        sidebarOpen: false,
+        aboutModalOpen: false,
       };
     case AppActions.LOAD_CODE_SAMPLE:
       return handleLoadCodeSample(state, action);
