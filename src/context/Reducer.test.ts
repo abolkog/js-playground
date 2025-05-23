@@ -9,8 +9,8 @@ describe('Reducer tests', () => {
     error: '',
     loading: false,
     display: 'none',
-    historyModalShown: false,
     sidebarOpen: false,
+    historyOpen: false,
   };
 
   it('update and persist code when update code action is dispatched', () => {
