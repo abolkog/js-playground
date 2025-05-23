@@ -1,5 +1,3 @@
-type DisplayType = 'none' | 'block'; // FIXME: remove ?
-
 type AppState = {
   code: string;
   codeSample: string;
@@ -7,9 +5,9 @@ type AppState = {
   result: unknown[];
   error: string;
   loading: boolean;
-  display: DisplayType;
-  historyOpen: boolean;
   sidebarOpen: boolean;
+  historyOpen: boolean;
+  aboutModalOpen: boolean;
 };
 
 type Payload = {

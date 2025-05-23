@@ -8,7 +8,6 @@ describe('<Console />', () => {
 
   afterEach(() => {
     state = {
-      display: 'block',
       error: '',
       result: [''],
     } as AppState;
