@@ -5,7 +5,7 @@
 
 A simple JavaScript playground / code sandbox hooked up with few libraries for quick code testing
 
-![Sample](https://user-images.githubusercontent.com/3861725/75946297-d6600380-5ef0-11ea-9b59-794ae8ec613b.png)
+![Sample](images/js-playground.png)
 
 ## Available Libraries
 
@@ -13,6 +13,7 @@ A simple JavaScript playground / code sandbox hooked up with few libraries for q
 - [Lodash](https://lodash.com/)
 - [Axios](https://github.com/axios/axios)
 - [Luxon](https://moment.github.io/luxon/#/)
+- [date-fns](https://date-fns.org/)
 
 ## Demo
 
