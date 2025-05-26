@@ -102,3 +102,10 @@ console.log(calculate({ operation: '*', operand1: 4, operand2: 6 }));   // Outpu
 ];
 
 export const MAX_SHARE_CODE_LENGTH = 2000;
+
+export const MAX_HISTORY_SIZE = 20;
+
+export const STORAGE = {
+  CODE: '@abolkog/jscode',
+  HISTORY: 'abolkog/jscode-history',
+};

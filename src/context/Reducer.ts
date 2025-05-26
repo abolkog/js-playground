@@ -1,4 +1,5 @@
-import { saveToHistory, setLocalStorage, STORAGE } from 'services/storage';
+import { saveToHistory, setLocalStorage } from 'services/storage';
+import { STORAGE } from 'helpers/const';
 
 export const AppActions = {
   UPDATE_CODE: 'UPDATE_CODE',

@@ -1,5 +1,6 @@
 import { createContext, useMemo, useReducer } from 'react';
-import { getLocalStorage, STORAGE } from 'services/storage';
+import { getLocalStorage } from 'services/storage';
+import { STORAGE } from 'helpers/const';
 import { reducer } from 'context/Reducer';
 
 const initialState: AppState = {
