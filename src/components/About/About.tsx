@@ -78,6 +78,24 @@ const About: React.FC = () => {
                   >
                     Khalid Elshafie
                   </a>
+                  <div className="mt-6 flex gap-4 justify-center">
+                    <a
+                      href="https://github.com/abolkog/js-playground/fork"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded border border-gray-700 transition"
+                    >
+                      Fork on GitHub
+                    </a>
+                    <a
+                      href="https://github.com/abolkog/js-playground"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-2 px-4 rounded transition"
+                    >
+                      Star on GitHub
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
