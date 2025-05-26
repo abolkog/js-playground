@@ -1,11 +1,5 @@
 import { compress, decompress } from 'lz-string';
-
-const MAX_HISTORY_SIZE = 20;
-
-export const STORAGE = {
-  CODE: '@abolkog/jscode',
-  HISTORY: 'abolkog/jscode-history',
-};
+import { MAX_HISTORY_SIZE, STORAGE } from 'helpers/const';
 
 export const getLocalStorage = (key: string, defaultValue = '') => {
   return localStorage.getItem(key) || defaultValue;

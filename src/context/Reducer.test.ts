@@ -73,4 +73,67 @@ describe('Reducer tests', () => {
     });
     expect(state).toEqual(INITIAL_STATE);
   });
+
+  describe('show and hide about modal', () => {
+    it('update sidebar value when show about modal is dispatched', () => {
+      const state = reducer(INITIAL_STATE, {
+        type: AppActions.SHOW_ABOUT_MODAL,
+      });
+      expect(state.sidebarOpen).toEqual(false);
+      expect(state.aboutModalOpen).toEqual(true);
+    });
+
+    it('update sidebar value when hide about modal is dispatched', () => {
+      const state = reducer(INITIAL_STATE, {
+        type: AppActions.HIDE_ABOUT_MODAL,
+      });
+      expect(state.sidebarOpen).toEqual(false);
+      expect(state.aboutModalOpen).toEqual(false);
+    });
+  });
+
+  describe('show and hide history', () => {
+    it('update sidebar value when show history is dispatched', () => {
+      const state = reducer(INITIAL_STATE, {
+        type: AppActions.SHOW_HISTORY,
+      });
+      expect(state.sidebarOpen).toEqual(false);
+      expect(state.historyOpen).toEqual(true);
+    });
+
+    it('update sidebar value when hide history is dispatched', () => {
+      const state = reducer(INITIAL_STATE, {
+        type: AppActions.HIDE_HISTORY,
+      });
+      expect(state.sidebarOpen).toEqual(false);
+      expect(state.historyOpen).toEqual(false);
+    });
+  });
+
+  describe('toggle sidebar', () => {
+    it('toggle sidebar open when toggle sidebar is dispatched', () => {
+      const state = reducer(INITIAL_STATE, {
+        type: AppActions.SHOW_SIDEBAR,
+      });
+      expect(state.sidebarOpen).toEqual(true);
+    });
+
+    it('toggle sidebar close when toggle sidebar is dispatched again', () => {
+      const initialState = { ...INITIAL_STATE, sidebarOpen: true };
+      const state = reducer(initialState, {
+        type: AppActions.HIDE_SIDEBAR,
+      });
+      expect(state.sidebarOpen).toEqual(false);
+    });
+  });
+
+  it('update shareUrl when set share url is dispatched', () => {
+    const payload = 'share-url';
+
+    const state = reducer(INITIAL_STATE, {
+      type: AppActions.SET_SHARE_URL,
+      payload,
+    });
+    expect(state.shareUrl).toEqual(payload);
+  });
 });
