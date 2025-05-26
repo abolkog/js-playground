@@ -100,3 +100,5 @@ console.log(calculate({ operation: '*', operand1: 4, operand2: 6 }));   // Outpu
 `,
   },
 ];
+
+export const MAX_SHARE_CODE_LENGTH = 2000;

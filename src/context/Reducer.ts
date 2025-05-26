@@ -14,6 +14,7 @@ export const AppActions = {
   HIDE_HISTORY: 'HIDE_HISTORY',
   SHOW_ABOUT_MODAL: 'SHOW_ABOUT_MODAL',
   HIDE_ABOUT_MODAL: 'HIDE_ABOUT_MODAL',
+  SET_SHARE_URL: 'SET_SHARE_URL',
 };
 
 const handleCodeUpdate = (state: AppState, action: Action): AppState => {
@@ -85,6 +86,11 @@ export const reducer = (state: AppState, action: Action): AppState => {
       return { ...state, sidebarOpen: true };
     case AppActions.HIDE_SIDEBAR:
       return { ...state, sidebarOpen: false };
+    case AppActions.SET_SHARE_URL:
+      return {
+        ...state,
+        shareUrl: action.payload as string,
+      };
     default:
       return state;
   }

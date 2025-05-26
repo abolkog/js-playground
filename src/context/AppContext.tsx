@@ -8,6 +8,7 @@ const initialState: AppState = {
   codeSampleName: '',
   result: [],
   error: '',
+  shareUrl: '',
   loading: false,
   sidebarOpen: false,
   historyOpen: false,
