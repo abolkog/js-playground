@@ -6,6 +6,8 @@ import { AppContext } from 'context/AppContext';
 import { AppActions } from 'context/Reducer';
 import History from 'components/History';
 import About from 'components/About';
+import ShareCode from 'components/ShareCode';
+import { decompressFromEncodedURIComponent } from 'lz-string';
 
 const App: React.FC = () => {
   const { dispatch } = useContext(AppContext);
@@ -16,6 +18,20 @@ const App: React.FC = () => {
       dispatch({ type: AppActions.CODE_RUN_SUCCESS, payload: msg });
       consoleProxy(msg);
     };
+
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const codeParam = params.get('code');
+      if (codeParam) {
+        const payload = {
+          codeSample: decompressFromEncodedURIComponent(codeParam),
+          codeSampleName: 'URL Code',
+        };
+        dispatch({ type: AppActions.LOAD_CODE_SAMPLE, payload });
+      }
+    } catch (_) {
+      // Ignore errors in URL parsing or decompression
+    }
   }, []);
 
   return (
@@ -38,6 +54,7 @@ const App: React.FC = () => {
 
       <History />
       <About />
+      <ShareCode />
     </div>
   );
 };

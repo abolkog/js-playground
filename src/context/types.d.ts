@@ -8,6 +8,7 @@ type AppState = {
   sidebarOpen: boolean;
   historyOpen: boolean;
   aboutModalOpen: boolean;
+  shareUrl: string;
 };
 
 type Payload = {

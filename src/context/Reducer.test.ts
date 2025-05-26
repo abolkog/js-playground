@@ -7,6 +7,7 @@ describe('Reducer tests', () => {
     codeSampleName: '',
     result: [],
     error: '',
+    shareUrl: '',
     loading: false,
     sidebarOpen: false,
     historyOpen: false,

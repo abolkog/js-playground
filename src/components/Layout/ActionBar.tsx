@@ -1,3 +1,4 @@
+import { useContext, useEffect, useState } from 'react';
 import {
   Disclosure,
   DisclosureButton,
@@ -6,16 +7,17 @@ import {
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import {
   PlayIcon,
+  ShareIcon,
   TrashIcon,
   CodeBracketIcon,
   ClockIcon,
 } from '@heroicons/react/24/solid';
+import { compressToEncodedURIComponent } from 'lz-string';
 import Spinner from 'components/Spinner';
 import { AppContext } from 'context/AppContext';
 import { AppActions } from 'context/Reducer';
-import { CODE_SAMPLES } from 'helpers/const';
+import { CODE_SAMPLES, MAX_SHARE_CODE_LENGTH } from 'helpers/const';
 import useCodeRunner from 'hooks/useCodeRunner';
-import { useContext } from 'react';
 
 const codeSampleToMenu = CODE_SAMPLES.map(sample => {
   const { codeSample, name } = sample;
@@ -51,6 +53,23 @@ const actionBarItems: ActionBarItem[] = [
 const ActionBar: React.FC = () => {
   const { state, dispatch } = useContext(AppContext);
   const { runCode } = useCodeRunner();
+  const [showShareButton, setShowShareButton] = useState(false);
+
+  useEffect(() => {
+    const { code } = state;
+    const showShareButton = code.length > 0;
+    setShowShareButton(showShareButton);
+  }, [state.code.length]);
+
+  const onShareButtonClick = () => {
+    const compressedCode = compressToEncodedURIComponent(state.code);
+    const shareUrl = `${window.location.origin}/?code=${compressedCode}`;
+    if (shareUrl.length > MAX_SHARE_CODE_LENGTH) {
+      alert('The code is too long to share. Please reduce the code length.');
+      return;
+    }
+    dispatch({ type: AppActions.SET_SHARE_URL, payload: shareUrl });
+  };
 
   return (
     <nav className="flex flex-1 flex-col">
@@ -113,6 +132,17 @@ const ActionBar: React.FC = () => {
                 )}
               </li>
             ))}
+            {showShareButton && (
+              <li>
+                <a
+                  onClick={onShareButtonClick}
+                  className="text-amber-400 hover:bg-gray-800 hover:amber-600 group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold cursor-pointer"
+                >
+                  Share Code
+                  <ShareIcon aria-hidden="true" className="size-5 shrink-0" />
+                </a>
+              </li>
+            )}
           </ul>
         </li>
         <li className="-mx-6 mt-auto">
